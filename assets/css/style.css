@@ -2573,6 +2573,8 @@ textarea.form-control {
 }
 
 .preloader .loading {
+  display: flex;
+  justify-content: center;
   position: relative;
   width: 80px;
   height: 80px;
