@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro-taskservices.co.mz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <style>
+    :root {
+      --primary-color: #085b57;
+      --secondary-color: #2aac3f;
+      --light-gray: #f5f5f5;
+      --dark-gray: #333;
+      --white: #ffffff;
+      --error-color: #ff0019;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Rubik', 'Roboto', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+    
+    .register-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .register-left {
+      flex: 1;
+      background: linear-gradient(rgba(8, 91, 87, 0.8), rgba(8, 91, 87, 0.9)), 
+                  url('assets/images/sliders/7.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      color: var(--white);
+      text-align: center;
+    }
+    
+    .register-left h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    
+    .register-left p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+    
+    .benefits {
+      text-align: left;
+      margin-top: 2rem;
+    }
+    
+    .benefits li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .benefits i {
+      color: var(--secondary-color);
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .register-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    
+    .register-form-container {
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo img {
+      max-width: 150px;
+      height: auto;
+    }
+    
+    .register-form h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--dark-gray);
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(8, 91, 87, 0.2);
+    }
+    
+    .password-strength {
+      height: 4px;
+      background-color: #eee;
+      margin-top: 5px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .strength-meter {
+      height: 100%;
+      width: 0;
+      background-color: var(--error-color);
+      transition: width 0.3s, background-color 0.3s;
+    }
+    
+    .form-footer {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+    
+    .form-footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .form-footer a:hover {
+      text-decoration: underline;
+      color: var(--secondary-color);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .alert {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    
+    .alert-danger {
+      background-color: #f8d7da;
+      color: var(--error-color);
+      border: 1px solid #f5c6cb;
+    }
+    
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .terms-check input {
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+    
+    .terms-check label {
+      font-size: 0.9rem;
+    }
+    
+    .terms-check a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .terms-check a:hover {
+      text-decoration: underline;
+      color: var(--secondary-color);
+    }
+    
+    @media (max-width: 768px) {
+      .register-container {
+        flex-direction: column;
+      }
+      
+      .register-left {
+        padding: 2rem 1rem;
+      }
+      
+      .register-right {
+        padding: 2rem 1rem;
+      }
+      
+      .register-form-container {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <div class="register-left">
+      <h1>Junte-se à Nossa Comunidade</h1>
+      <p>Registre-se para acessar todos os serviços de gestão de resíduos e acompanhar suas solicitações.</p>
+      
+      <ul class="benefits">
+        <li><i class="fas fa-check-circle"></i> Acompanhe seus serviços contratados</li>
+        <li><i class="fas fa-check-circle"></i> Solicite coletas adicionais</li>
+        <li><i class="fas fa-check-circle"></i> Acesse relatórios mensais</li>
+        <li><i class="fas fa-check-circle"></i> Receba promoções exclusivas</li>
+      </ul>
+      
+      <img src="assets/images/logo/Task logo-white.svg" alt="Task Environmental Service" style="max-width: 200px; margin-top: 2rem;">
+    </div>
+    
+    <div class="register-right">
+      <div class="register-form-container">
+        <div class="logo">
+          <img src="assets/images/logo/Task logo.svg" alt="Task Environmental Service">
+        </div>
+        
+        <!-- Mensagens de erro/sucesso -->
+        <div id="message-container"></div>
+        
+        <form id="registerForm" class="register-form" action="register.php" method="POST">
+          <h2>Criar Conta</h2>
+          
+          <div class="form-group">
+            <label for="name">Nome Completo *</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Seu nome completo" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="seu@email.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(+258) 84 123 4567">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Senha *</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Mínimo 8 caracteres" minlength="8" required>
+            <div class="password-strength">
+              <div class="strength-meter" id="strengthMeter"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirm_password">Confirmar Senha *</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Digite novamente sua senha" required>
+          </div>
+          
+          <div class="terms-check">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">Eu li e concordo com os <a href="terms.html">Termos de Serviço</a> e <a href="privacy.html">Política de Privacidade</a> *</label>
+          </div>
+          
+          <button type="submit" class="btn">Registrar</button>
+          
+          <div class="form-footer">
+            Já tem uma conta? <a href="login.html">Faça login aqui</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Validação em tempo real da senha
+    document.getElementById('password').addEventListener('input', function(e) {
+      const password = e.target.value;
+      const strengthMeter = document.getElementById('strengthMeter');
+      let strength = 0;
+      
+      // Verificar comprimento
+      if (password.length >= 8) strength += 1;
+      
+      // Verificar caracteres diversos
+      if (password.match(/[a-z]/)) strength += 1;
+      if (password.match(/[A-Z]/)) strength += 1;
+      if (password.match(/[0-9]/)) strength += 1;
+      if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+      
+      // Atualizar medidor visual
+      const width = (strength / 4) * 100;
+      let color = '#ff0019'; // Vermelho
+      
+      if (strength >= 2) color = '#ffc107'; // Amarelo
+      if (strength >= 3) color = '#28a745'; // Verde
+      
+      strengthMeter.style.width = width + '%';
+      strengthMeter.style.backgroundColor = color;
+    });
+    
+    // Validação do formulário antes do envio
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm_password').value;
+      const messageContainer = document.getElementById('message-container');
+      
+      // Limpar mensagens anteriores
+      messageContainer.innerHTML = '';
+      
+      // Verificar se as senhas coincidem
+      if (password !== confirmPassword) {
+        e.preventDefault();
+        showMessage('As senhas não coincidem. Por favor, verifique.', 'danger');
+        return false;
+      }
+      
+      // Verificar força da senha (opcional)
+      if (password.length < 8) {
+        e.preventDefault();
+        showMessage('A senha deve ter pelo menos 8 caracteres.', 'danger');
+        return false;
+      }
+      
+      // Se tudo estiver ok, o formulário será enviado
+    });
+    
+    function showMessage(message, type) {
+      const messageContainer = document.getElementById('message-container');
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type}`;
+      alertDiv.textContent = message;
+      messageContainer.appendChild(alertDiv);
+      
+      // Rolagem suave para a mensagem
+      alertDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Verificar parâmetros da URL para mensagens (ex: ?error=email_exists)
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+      
+      if (error) {
+        let message = '';
+        switch(error) {
+          case 'email_exists':
+            message = 'Este email já está cadastrado.';
+            break;
+          case 'invalid_email':
+            message = 'Por favor, insira um email válido.';
+            break;
+          default:
+            message = 'Ocorreu um erro ao registrar. Por favor, tente novamente.';
+        }
+        showMessage(message, 'danger');
+      }
+      
+      const success = urlParams.get('success');
+      if (success === 'registered') {
+        showMessage('Registro concluído com sucesso! Por favor, faça login.', 'success');
+      }
+    });
+  </script>
+</body>
+</html>

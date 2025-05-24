@@ -1,0 +1,1943 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="TaskEnvironmentalService">
+  <link href="assets/images/favicon/favicon.svg" rel="icon">
+  <title>Taskservices.co.mz</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <link rel="stylesheet" href="assets/css/libraries.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<!-- Popup de Imagem Personalizada -->
+<div id="imagePopup" class="image-popup">
+  <div class="image-popup-content">
+    <span class="popup-close">&times;</span>
+    <img src="assets/images/POPUP.png" alt="Promoção Especial" class="popup-image">
+  </div>
+</div>
+
+
+<style>
+  a[href^="mailto:"] {
+  color: #085b57; /* Cor do link */
+  text-decoration: underline;
+}
+a[href^="mailto:"]:hover {
+  color: #2aac3f; /* Cor ao passar o mouse */
+}
+
+/* Popup de Imagem */
+.image-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+.image-popup-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  text-align: center;
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+}
+
+.popup-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.popup-close-btn {
+  background: #666;
+  border: none;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .popup-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .popup-actions a, 
+  .popup-actions button {
+    width: 100%;
+  }
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const imagePopup = document.getElementById('imagePopup');
+  const closeBtns = document.querySelectorAll('.popup-close, .popup-close-btn');
+
+  // Mostrar popup 2 segundos e meio após o carregamento (vou actualizar aqui para 1 dia 1*60*60*2500)
+setTimeout(showImagePopup, 2500);
+  
+  // Fechar popup
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeImagePopup);
+  });
+
+  // Fechar ao clicar fora da imagem
+  imagePopup.addEventListener('click', function(e) {
+    if (e.target === imagePopup) {
+      closeImagePopup();
+    }
+  });
+
+  // Fechar com tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeImagePopup();
+    }
+  });
+
+  function showImagePopup() {
+    imagePopup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImagePopup() {
+    imagePopup.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+});
+</script>
+
+
+<body>
+  <div class="wrapper">
+    <div class="preloader">
+      <div class="loading"></div>
+      <img src="assets/images/loading-animation.gif" class="spinner" alt="Carregando" />
+    </div><!-- /.preloader -->
+
+    <!-- =========================
+        Header
+    =========================== -->
+    <header class="header header-layout1">
+      <div class="header-topbar">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0">
+                  <li>
+                    <i class="icon-mail"></i>
+                     <a href="mailto:clients@taskservices.co.mz?subject=Contacto via Site Task Environmental&body=Olá Task Environmental,%0D%0A%0D%0AGostaria de ter mais informações sobre os vossos serviços:" class="email-link " data-translate="Email: clients@taskservices.co.mz">Email: clients@taskservices.co.mz</a>
+                    </li>
+                  <li>
+                    <i class="icon-clock"></i>
+                    <a href="tel:+258877337315" >+258877337315</a>
+                  </li>
+                  <li>
+                    <i class="icon-location color-primary"></i>
+                    <a href="#" class="color-primary" data-translate="Veja Onde estamos">Veja Onde estamos</a>
+                  </li>
+                </ul><!-- /.contact__list -->
+                <div class="d-flex align-items-center">
+                  <form class="header-topbar__search mr-20">
+                    <input type="text" class="form-control" placeholder="Faça a sua pesquisa...">
+                    <button class="header-topbar__search-btn"><i class="fa fa-search"></i></button>
+                  </form>
+                  <ul class="social-icons list-unstyled mb-0 mr-20">
+                    <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                  </ul><!-- /.social-icons -->
+                  <div class="dropdown lang-dropdown">
+  <button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown" data-toggle="dropdown">
+    <img src="assets/images/flags/pt.png" alt="pt"> <span>Português</span>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="langDropdown">
+    <a class="dropdown-item" href="#" data-lang="pt">
+      <img src="assets/images/flags/pt.png" alt="pt"> <span>Português</span>
+    </a>
+    <a class="dropdown-item" href="#" data-lang="en">
+      <img src="assets/images/flags/en.png" alt="en"> <span>English</span>
+    </a>
+  </div>
+</div>
+                </div>
+              </div>
+            </div><!-- /.col-12 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.header-top -->
+      <nav class="navbar navbar-expand-lg sticky-navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/images/logo/Task logo.svg" class="logo" alt="logo">
+          </a>
+          <button class="navbar-toggler" type="button">
+            <span class="menu-lines"><span></span></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNavigation">
+            <ul class="navbar-nav">
+              <li class="nav__item has-dropdown">
+                <a href="index.html" class="nav__item-link active">Início</a>
+              </li><!-- /.nav-item -->
+              <li class="nav__item has-dropdown">
+                <a href="about-us.html" class="nav__item-link">Empresa</a>
+                <button class="dropdown-toggle" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li class="nav__item">
+                    <a href="about-us.html" class="nav__item-link">Sobre Nós</a>
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item">
+                  <li class="nav__item">
+                    <a href="team.html" class="nav__item-link">Nossa Team</a>
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item">
+                    <a href="pricing.html" class="nav__item-link">Preços & Planos</a>
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item">
+                    <a href="faqs.html" class="nav__item-link">Dúvidas & Ajuda</a>
+                  </li> <!-- /.nav-item -->
+                  <li class="nav__item">
+                    <a href="gallery.html" class="nav__item-link">Galeria</a>
+                  </li><!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item has-dropdown">
+                <a href="services.html" class="nav__item-link">Serviços</a>
+                <button class="dropdown-toggle" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="lixo.html" class="nav__item-link">Recolha Esporádica de Lixo</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="banheiros.html" class="nav__item-link">Venda & Aluguer de Banheiros Móveis</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="baldes.html" class="nav__item-link">Venda & Aluguer de Baldes de Lixo</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="residuos.html" class="nav__item-link">Gestão de Resíduos Perigososs</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="fossaseedificios.html" class="nav__item-link">Limpeza de Fossas & Edifícios</a>
+                  </li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="lixoplanificado.html" class="nav__item-link">Recolha de Lixo Planificada</a>
+                  </li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item has-dropdown">
+                <a href="projects-grid.html" class="nav__item-link">Projectos</a>
+                <button class="dropdown-toggle" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="projects-grid.html" class="nav__item-link">Acção Social</a></li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item has-dropdown">
+                <a href="blog.html" class="nav__item-link">Novidades</a>
+                <button class="dropdown-toggle" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu">
+                  <li class="nav__item">
+                    <a href="blog.html" class="nav__item-link">Blog</a>
+                  </li><!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item">
+                <a href="contact-us.html" class="nav__item-link" data-translate="Contactos">Contactos</a>
+              </li><!-- /.nav-item -->
+            </ul><!-- /.navbar-nav -->
+            <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
+          </div><!-- /.navbar-collapse -->
+          <div class="contact__number d-none d-xl-flex align-items-center">
+            <i class="icon-phone"></i>
+            <a href="tel:+258877337315">+258877337315</a>
+          </div>
+          <ul class="navbar-actions d-none d-xl-flex align-items-center list-unstyled mb-0">
+            <li>
+              <a href="request-quote.html" class="btn btn__primary" data-translate="PEDIR COTAÇÃO">
+                <span>PEDIR COTAÇÃO</span>
+                <i class="icon-arrow-right"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="login.html" class="btn btn__primary" data-translate="Fazer Login">
+                <span>Fazer Login</span>
+              </a>
+            </li>
+          </ul><!-- /.navbar-actions -->
+        </div><!-- /.container -->
+      </nav><!-- /.navabr -->
+    </header><!-- /.Header -->
+
+    <!-- ============================
+        Slider
+    ============================== -->
+    <section class="slider">
+      <div class="slick-carousel carousel-arrows-light carousel-dots-light m-slides-0"
+        data-slick='{"slidesToShow": 1, "arrows": true, "dots": true, "speed": 700,"fade": true,"cssEase": "linear"}'>
+        <div class="slide-item align-v-h bg-overlay bg-overlay-2">
+          <div class="bg-img"><img src="assets/images/sliders/1.jpg" alt="slide img"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                <div class="slide__body">
+                  <span class="slide__subtitle" data-translate="Serviço diversificado e 100% Moz">Serviço diversificado e 100% Moz</span>
+                  <h2 class="slide__title" data-translate="GESTÃO DE RESÍDUOS SÓLIDOS!">GESTÃO DE RESÍDUOS SÓLIDOS!</h2>
+                  <p class="slide__desc" data-translate="Da Colecta à Destinação Responsável: Soluções Sustentáveis para um Futuro Limpo.">Da Colecta à Destinação Responsável: Soluções Sustentáveis para um Futuro Limpo.
+                  </p>
+                  <div class="d-flex">
+                    <a href="services.html" class="btn btn__primary mr-30" data-translate="VEJA MAIS">
+                      <i class="icon-arrow-right"></i><span>VEJA MAIS</span>
+                    </a>
+                  </div>
+                </div><!-- /.slide__body -->
+              </div><!-- /.col-xl-8 -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+        </div><!-- /.slide-item -->
+        <div class="slide-item align-v-h bg-overlay">
+          <div class="bg-img"><img src="assets/images/sliders/2.jpg" alt="slide img"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                <div class="slide__body">
+                  <span class="slide__subtitle" data-translate="Serviço diversificado e 100% Moz">Serviço diversificado e 100% Moz</span>
+                  <h2 class="slide__title" data-translate="BANHEIROS MÓVEIS!">BANHEIROS MÓVEIS!</h2>
+                  <p class="slide__desc">Higiene, Conforto e Sustentabilidade para Obras, Eventos e Festas.
+                  <div class="d-flex">
+                    <a href="services.html" class="btn btn__primary mr-30">
+                      <i class="icon-arrow-right"></i><span>VEJA MAIS</span>
+                    </a>
+                  </div>
+                </div><!-- /.slide__body -->
+              </div><!-- /.col-xl-8 -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+        </div><!-- /.slide-item -->
+        <div class="slide-item align-v-h bg-overlay">
+          <div class="bg-img"><img src="assets/images/sliders/3.jpg" alt="slide img"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                <div class="slide__body">
+                  <span class="slide__subtitle">Serviço diversificado e 100% Moz</span>
+                  <h2 class="slide__title">BALDES DE LIXO!</h2>
+                  <p class="slide__desc">Variedade e Qualidade em Baldes de Lixo Para Casas, Empresas, Comércio e Indústrias.
+                  <div class="d-flex">
+                    <a href="services.html" class="btn btn__primary mr-30">
+                      <i class="icon-arrow-right"></i><span>VEJA MAIS</span>
+                    </a>
+                  </div>
+                </div><!-- /.slide__body -->
+              </div><!-- /.col-xl-8 -->
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+        </div><!-- /.slide-item -->
+      </div><!-- /.carousel -->
+    </section><!-- /.slider -->
+
+    <!-- ========================
+      About Layout 1
+    =========================== -->
+    <section class="about-layout1 pt-130 pb-130">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-7 offset-lg-1">
+            <div class="heading__layout2 mb-60">
+              <h2 class="heading__subtitle">Liderando a Transformação na Gestão de Resíduos Sólidos</h2>
+              <h3 class="heading__title">Da Colecta a destinação final: O futuro é verde & ele começa com as escolhas que fazemos hoje!"!</h3>
+            </div><!-- /.heading__layout2 -->
+          </div><!-- /.col-lg-7 -->
+        </div><!-- /.row -->
+        <div class="row align-items-center">
+          <div class="col-sm-12 col-md-12 col-lg-2">
+            <!-- counter item #1 -->
+            <div class="counter-item">
+              <h4 class="counter">1050 </h4>
+              <p class="counter__desc pr-0">Clientes Satisfeitos </p>
+              <div class="divider__line"></div>
+            </div>
+            <!-- counter item #2 -->
+            <div class="counter-item">
+              <h4 class="counter">05 </h4>
+              <p class="counter__desc pr-0">Anos de Experiência</p>
+              <div class="divider__line"></div>
+            </div>
+            <!-- counter item #3 -->
+            <div class="counter-item">
+              <h4 class="counter">80</h4>
+              <p class="counter__desc pr-0">Parcerias Conquistadas</p>
+              <div class="divider__line"></div>
+            </div>
+          </div><!-- /.col-lg-2 -->
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <div class="video-banner-layout2">
+              <img src="assets/images/about/1.jpg" alt="about" class="w-100">
+              <div class="video-has-img">
+                <img src="assets/images/video/1.jpg" alt="video">
+                <a class="video__btn video__btn-white popup-video" href="https://www.youtube.com/watch?v=nrJtHemSPW4">
+                  <div class="video__player">
+                    <i class="fa fa-play"></i>
+                  </div>
+                </a>
+                <span class="video__btn-title">Assista nosso vídeo!</span>
+              </div>
+            </div><!-- /.video-banner -->
+          </div><!-- /.col-lg-5 -->
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <div class="about__text">
+              <div class="text__icon">
+                  <img src="assets/images/icons/5.png" alt="" width="106" height="90">
+              </div>
+              <p class="heading__desc font-weight-medium color-secondary mb-30">Impulsionamos a transição para sistemas de gestão de resíduos mais inteligentes, eficientes e ambientalmente responsáveis. Transformamos desafios ambientais em oportunidades sustentáveis — esse é o nosso propósito!
+              </p>
+              <p class="heading__desc mb-20">Desafio Global-Situação dos resíduos em África<br>
+                 
+              Espera-se que este número cresça para 244 milhões de toneladas por ano até 2025. Com uma taxa média de recolha de resíduos de apenas 55% (68 milhões de toneladas), somente metade de todos os resíduos gerados em África são recolhidos para o campo de depósito de lixo ao ceu aberto.</p>
+              <p class="heading__desc mb-20">Gerar valor acima do dinheiro do cliente , isto é, entregar mais do que o cliente paga!</p>
+              <div class="d-flex align-items-center mt-30">
+                <a href="about-us.html" class="btn btn__secondary mr-30">
+                  <i class="icon-arrow-right"></i> <span>Veja mais</span>
+                </a>
+                <img src="assets/images/about/signature.svg" alt="singnture">
+              </div>
+            </div><!-- /.about__text -->
+          </div><!-- /.col-lg-5 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.About Layout 1 -->
+
+    <!-- ====================== 
+    services Layout 2
+    ========================= -->
+    <section class="services-layout2 pt-120">
+      <div class="bg-img"><img src="assets/images/backgrounds/5.jpg" alt="background"></div>
+      <div class="container">
+        <div class="row mb-70">
+          <div class="col-12">
+            <h2 class="heading__subtitle color-primary">Tornando o amanhã diferente hoje.</h2>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <h3 class="heading__title color-white">Transformamos resíduos em responsabilidade & garantimos que o Seu lixo esteja no lugar certo!</h3>
+          </div><!-- /col-lg-5 -->
+          <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
+            <p class="heading__desc font-weight-bold color-gray mb-30">Soluções completas e personalizadas em gestão de resíduos sólidos, desde a coleta até o destino final, com foco na sustentabilidade, eficiência e conformidade ambiental. </p>
+            <div class="d-flex align-items-center">
+              <a href="request-quote.html" class="btn btn__primary btn__primary-style2 mr-30">
+                <i class="icon-arrow-right"></i>
+                <span>PEDIR COTAÇÃO</span>
+              </a>
+              <a href="services.html" class="btn btn__white btn__link">
+                <i class="icon-arrow-right"></i>
+                <span>Veja todos os Serviços</span>
+              </a>
+            </div>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="slick-carousel carousel-arrows-light"
+              data-slick='{"slidesToShow": 4, "slidesToScroll": 4, "arrows": true, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2, "slidesToScroll": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}]}'>
+              <!-- service item #1 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/1.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Recolha Esporádica de Lixo</h4>
+                  <p class="service__desc">Seu lixo no lugar certo!</p>
+                  <a href="lixo.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+              <!-- service item #2 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/2.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Venda & Aluguer de Banheiros Móveis</h4>
+                  <p class="service__desc">Higiene onde precisar!</p>
+                  <a href="banheiros.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+              <!-- service item #3 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/3.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Venda & Aluguer de Baldes de Lixo</h4>
+                  <p class="service__desc">Organização e limpeza!</p>
+                  <a href="baldes.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+              <!-- service item #4 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/4.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Gestão de Resíduos Perigosos</h4>
+                  <p class="service__desc">Manuseio Seguro !</p>
+                  <a href="residuos.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+              <!-- service item #5 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/5.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Limpeza de Fossas & Edifícios</h4>
+                  <p class="service__desc">Higienização Profissional!</p>
+                  <a href="fossaseedificios.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+              <!-- service item #5 -->
+              <div class="service-item">
+                <div class="service__img">
+                  <img src="assets/images/services/5.jpg" alt="service" loading="lazy">
+                </div><!-- /.service__img -->
+                <div class="service__body">
+                  <h4 class="service__title">Recolha de Lixo Planificada</h4>
+                  <p class="service__desc">Opções Flexíveis</p>
+                  <a href="lixoplanificado.html" class="btn btn__secondary btn__outlined btn__custom">
+                    <span>Veja Mais</span>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </div><!-- /.service__body -->
+              </div><!-- /.service-item -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.services Layout 2 -->
+
+    <!-- =========================
+      Pricing  
+      =========================== -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+            <div class="heading-layout2 text-center mb-40">
+              <h2 class="heading__subtitle color-primary">Confira nossos preços & planos de recolha de lixo </h2>
+              <h3 class="heading__title">Preços que se adaptam às suas necessidades</h3>
+            </div><!-- /.heading -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <!-- pricing item #1-->
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="pricing-item">
+              <div class="pricing__header">
+                <h5 class="pricing__title">Plano TASK START</h5>
+                <span class="pricing__subtitle">Um plano perfeito para casas</span>
+              </div>
+              <div class="pricing__body">
+                <div class="pricing__price">
+                  <span class="pricing__currency">MT</span><span>1.999</span><span class="pricing__time">/Mês
+                  </span>
+                </div>
+                <p class="pricing__desc">Qualidade no atendimento, recolha, colecta e tratamento do lixo
+                </p>
+                <a href="#" class="btn btn__secondary btn__block">
+                  <i class="icon-arrow-right"></i>
+                  <span>QUERO ESTE PLANO</span>
+                </a>
+                <ul class="pricing__list list-items list-items-layout2 list-unstyled">
+                  <li>Recolha de Lixo 1 vez por Semana</li>
+                  <li>Oferta de 1 Balde de Lixo</li>
+                  <li>Oferta de 1 Plástico de Lixo</li>
+                </ul>
+              </div>
+            </div><!-- /.pricing-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- pricing item #2-->
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="pricing-item">
+              <div class="pricing__header">
+                <h5 class="pricing__title">Plano TASK STANDARD</h5>
+                <span class="pricing__subtitle">Um plano perfeito para Casas, Empresas & Lojas</span>
+              </div>
+              <div class="pricing__body">
+                <div class="pricing__price">
+                  <span class="pricing__currency">MT</span><span>2.999</span><span class="pricing__time">/Mês</span>
+                </div>
+                <p class="pricing__desc">Qualidade no atendimento, recolha, colecta e tratamento do lixo
+                </p>
+                <a href="#" class="btn btn__primary btn__block">
+                  <i class="icon-arrow-right"></i>
+                  <span>QUERO ESTE PLANO</span>
+                </a>
+                <ul class="pricing__list list-items list-items-layout2 list-unstyled">
+                  <li>Recolha de Lixo 2 vezes por Semana</li>
+                  <li>Oferta de 1 Balde de Lixo</li>
+                  <li>Oferta de 1 Plástico de Lixo</li>
+                </ul>
+              </div>
+            </div><!-- /.pricing-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- pricing item #3-->
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="pricing-item">
+              <div class="pricing__header">
+                <h5 class="pricing__title">Plano TASK PREMIUM</h5>
+                <span class="pricing__subtitle">Um plano perfeito para Empresas, Obras & Indùstrias </span>
+              </div>
+              <div class="pricing__body">
+                <div class="pricing__price">
+                  <span class="pricing__currency">MT</span><span>4.999</span><span class="pricing__time">/Mês</span>
+                </div>
+                <p class="pricing__desc">Qualidade no atendimento, recolha, colecta e tratamento do lixo
+                </p>
+                <a href="#" class="btn btn__secondary btn__block">
+                  <i class="icon-arrow-right"></i>
+                  <span>QUERO ESTE PLANO</span>
+                </a>
+                <ul class="pricing__list list-items list-items-layout2 list-unstyled">
+                  <li>Recolha de Lixo 3 vezes por Semana</li>
+                  <li>Oferta de 3 Baldes de Lixo</li>
+                  <li>Oferta de 3 Plásticos de Lixo</li>
+                </ul>
+              </div>
+            </div><!-- /.pricing-item -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <p class="text__link text-center mb-0">Planos de Gestão de Resíduos Confiáveis & Acessíveis
+              <a href="services.html">
+                <span>Encontrar mais Soluções</span> <i class="icon-arrow-right"></i>
+              </a>
+            </p>
+          </div><!-- /.col-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.pricing  -->
+
+    <!-- ======================
+    Features Layout 2
+    ========================= -->
+    <section class="features-layout2 pt-120">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <h2 class="heading__subtitle color-primary">Tornando o amanhã diferente hoje.</h2>
+            <h3 class="heading__title">TASK ENVIRONMENTAL SERVICE</h3>
+            <p class="heading__desc mb-30">Somos uma empresa moçambicana especializada em soluções integradas de gestão de resíduos. Actuamos com foco na eficiência, sustentabilidade e inovação, oferecendo serviços diversificados que atendem às necessidades de empresas e comunidades. Nosso objectivo é nos tornar na maior empresa privada de gestão de resíduos sólidos em África, gerando valor real que vai além do investimento financeiro. </p>
+            <p class="heading__desc mb-40">Juntos, somos mais firmes no melhoramento do meio ambiente</p>
+            <a href="about-us.html" class="btn btn__primary btn__outlined btn__custom mb-40">
+              <i class="icon-arrow-right"></i>
+              <span>Veja mais Sobre Nós</span>
+            </a>
+          </div><!-- /col-lg-5 -->
+          <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
+            <div class="row">
+              <!-- Feature item #1 -->
+              <div class="col-sm-6">
+                <div class="feature-item">
+                  <div class="feature__icon">
+                    <img src="assets/images/icons/Missão.svg" alt="" width="90" height="90">
+                  </div>
+                  <h4 class="feature__title">Missão</h4>
+                  <p class="feature__desc">Nosso compromisso é oferecer serviços eficientes, seguros e ambientalmente responsáveis, garantindo a conformidade legal e a satisfação de nossos clientes e parceiros.
+
+                  </p>
+                </div><!-- /.feature-item -->
+              </div><!-- /.col-sm-6 -->
+              <!-- Feature item #2 -->
+              <div class="col-sm-6">
+                <div class="feature-item">
+                  <div class="feature__icon">
+                    <img src="assets/images/icons/Visão.svg" alt="" width="90" height="90">
+                  </div>
+                  <h4 class="feature__title">Visão</h4>
+                  <p class="feature__desc">Queremos nos tornar na maior empresa privada de gestão de resíduos sólidos de áfrica Gerando valor acima do dinheiro do cliente-entregar mais do que o cliente paga.
+
+
+                  </p>
+                </div><!-- /.feature-item -->
+              </div><!-- /.col-sm-6 -->
+              <!-- Feature item #3 -->
+              <div class="col-sm-6">
+                <div class="feature-item">
+                  <div class="feature__icon">
+                    <img src="assets/images/icons/Valores.svg" alt="" width="90" height="90">
+                  </div>
+                  <h4 class="feature__title">Valores</h4>
+                  <p class="feature__desc">Sustentabilidade Ambiental; <br>
+
+                    Ética e Transparência; <br>
+                    Inovação e Tecnologia; <br>
+                    Compromisso Social; <br>
+                    Qualidade e Excelência; <br>
+                    Responsabilidade Legal. 
+                  </p>
+                </div><!-- /.feature-item -->
+              </div><!-- /.col-sm-6 -->
+              <!-- Feature item #6 -->
+              <div class="col-sm-6">
+                <div class="feature-item feature-item-custom">
+                  <div class="feature__icon">
+                  </div>
+                  <h4 class="feature__title">SEJA <br> RESPONSÁVEL</h4>
+                  <p class="feature__desc">Livre o meio ambiente da poluição!</p>
+                </div><!-- /.feature-item -->
+              </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.Features Layout 2 -->
+
+    <!-- ====================== 
+   portfolio Layout 3
+    ========================= -->
+    <section class="portfolio-layout3 portfolio-carousel pt-120">
+      <div class="bg-img"><img src="assets/images/backgrounds/5.jpg" alt="background"></div>
+      <div class="container">
+        <div class="row mb-60">
+          <div class="col-12">
+            <h2 class="heading__subtitle color-primary">Tornando o amanhã diferente hoje.</h2>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-5">
+            <h3 class="heading__title color-white">PROJECTO TASK CLEAN</h3>
+          </div><!-- /col-lg-5 -->
+          <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
+            <p class="heading__desc font-weight-bold color-gray mb-30">Parceria feita com o município de Marracuene-Guava que visa fazer limpeza nas ruas e entradas principais do Bairro de Guava para melhorar o ambiente em que se vive </p>
+            <a href="projects-grid.html" class="btn btn__white btn__outlined">
+              <i class="icon-arrow-right"></i>
+              <span>Veja mais fotos</span>
+            </a>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="carousel-container">
+              <div class="slick-carousel carousel-arrows-light carousel-dots-light"
+                data-slick='{"slidesToShow": 3, "slidesToScroll": 3, "arrows": true, "dots": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2 ,"slidesToScroll": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2,"slidesToScroll": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1,"slidesToScroll": 1}}]}'>
+                <!-- portfolio item #1 -->
+                <div class="portfolio-item">
+                  <div class="portfolio__img">
+                    <img src="assets/images/portfolio/grid/1.jpg" alt="portfolio img">
+                  </div><!-- /.portfolio-img -->
+                  <div class="portfolio__body">
+                    <div class="portfolio__cat">
+                      <a href="#">BAIRO MARRACUENE</a>
+                    </div><!-- /.portfolio-cat -->
+                    <h4 class="portfolio__title"><a href="#">Acção Social</a></h4>
+                    <p class="portfolio__desc">Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados</p>
+                    <a href="projects-grid.html" class="btn btn__primary btn__sm">
+                      <i class="icon-arrow-right"></i>
+                      <span>Veja mais fotos</span>
+                    </a>
+                  </div><!-- /.portfolio__body -->
+                </div><!-- /.portfolio-item -->
+
+                <!-- portfolio item #1 -->
+                <div class="portfolio-item">
+                  <div class="portfolio__img">
+                    <img src="assets/images/portfolio/grid/2.jpg" alt="portfolio img">
+                  </div><!-- /.portfolio-img -->
+                  <div class="portfolio__body">
+                    <div class="portfolio__cat">
+                      <a href="#">BAIRO MARRACUENE</a>
+                    </div><!-- /.portfolio-cat -->
+                    <h4 class="portfolio__title"><a href="#">Acção Social</a></h4>
+                    <p class="portfolio__desc">Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados</p>
+                    <a href="projects-grid.html" class="btn btn__primary btn__sm">
+                      <i class="icon-arrow-right"></i>
+                      <span>Veja mais fotos</span>
+                    </a>
+                  </div><!-- /.portfolio__body -->
+                </div><!-- /.portfolio-item -->
+
+                <!-- portfolio item #1 -->
+                <div class="portfolio-item">
+                  <div class="portfolio__img">
+                    <img src="assets/images/portfolio/grid/3.jpg" alt="portfolio img">
+                  </div><!-- /.portfolio-img -->
+                  <div class="portfolio__body">
+                    <div class="portfolio__cat">
+                      <a href="#">BAIRO MARRACUENE</a>
+                    </div><!-- /.portfolio-cat -->
+                    <h4 class="portfolio__title"><a href="#">Acção Social</a></h4>
+                    <p class="portfolio__desc">Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados</p>
+                    <a href="projects-grid.html" class="btn btn__primary btn__sm">
+                      <i class="icon-arrow-right"></i>
+                      <span>Veja mais fotos</span>
+                    </a>
+                  </div><!-- /.portfolio__body -->
+                </div><!-- /.portfolio-item -->
+
+                <!-- portfolio item #4 -->
+                <div class="portfolio-item">
+                  <div class="portfolio__img">
+                    <img src="assets/images/portfolio/grid/4.jpg" alt="portfolio img">
+                  </div><!-- /.portfolio-img -->
+                  <div class="portfolio__body">
+                    <div class="portfolio__cat">
+                      <a href="#">BAIRO MARRACUENE</a>
+                    </div><!-- /.portfolio-cat -->
+                    <h4 class="portfolio__title"><a href="#">Acção Social</a></h4>
+                    <p class="portfolio__desc">Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados</p>
+                    <a href="projects-grid.html" class="btn btn__primary btn__sm">
+                      <i class="icon-arrow-right"></i>
+                      <span>Veja mais fotos</span>
+                    </a>
+                  </div><!-- /.portfolio__body -->
+                </div><!-- /.portfolio-item -->
+              </div><!-- /.carousel-->
+              <a href="projects-grid.html" class="view-projects d-none d-xl-flex">Todos Projectos</a>
+            </div><!-- /.carousel-container -->
+          </div><!-- /.col-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.portfolio Layout 3 -->
+
+    <!-- ======================
+    Testimonials 
+    ========================= -->
+    <section class="testimonials-layout1 pb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+            <div class="heading text-center mb-40">
+              <h2 class="heading__subtitle color-primary">Um Olhar dos nossos Clientes</h2>
+              <h3 class="heading__title">Nossos clientes compartilham suas experiências & percepções</h3>
+            </div><!-- /.heading -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <img src="assets/images/backgrounds/map4.png" alt="map">
+            <!-- Testimonial #1 -->
+            <div class="testimonial-box">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/1.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Contratei a Task para gestão de resíduos na minha empresa e foi a melhor decisão! Serviço impecável e equipe super profissional. Recomendo a todos! #TaskGestãoDeResíduos #Satisfeita
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #2 -->
+            <div class="testimonial-box">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/2.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Os banheiros móveis da Task foram essenciais para nosso evento. Limpos, práticos e com manutenção diária. Os convidados elogiaram muito! Obrigado Task! 🚽✨ #EventoDeSucesso
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #3 -->
+            <div class="testimonial-box">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/3.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Depois de meses tentando resolver nosso problema de fossas, a Task veio e resolveu em um dia! Atendimento rápido, preço justo e serviço de qualidade. Agora temos contrato mensal! 👏 #TaskResolve
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #4 -->
+            <div class="testimonial-box testimonial-hover-left">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/4.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Depois de meses tentando resolver nosso problema de fossas, a Task veio e resolveu em um dia! Atendimento rápido, preço justo e serviço de qualidade. Agora temos contrato mensal! 👏 #TaskResolve
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #5 -->
+            <div class="testimonial-box testimonial-hover-left">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/5.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Os banheiros móveis da Task foram essenciais para nosso evento. Limpos, práticos e com manutenção diária. Os convidados elogiaram muito! Obrigado Task! 🚽✨ #EventoDeSucesso
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #6 -->
+            <div class="testimonial-box">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/1.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Contratei a Task para gestão de resíduos na minha empresa e foi a melhor decisão! Serviço impecável e equipe super profissional. Recomendo a todos! #TaskGestãoDeResíduos #Satisfeita
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+            <!-- Testimonial #7 -->
+            <div class="testimonial-box">
+              <div class="testimonial__thumb">
+                <img src="assets/images/testimonials/thumbs/4.png" alt="author thumb">
+                <span class="pulsing-animation pulsing-animation-1"></span>
+                <span class="pulsing-animation pulsing-animation-2"></span>
+                <span class="pulsing-animation pulsing-animation-3"></span>
+              </div><!-- /.testimonial-thumb -->
+              <div class="testimonial__panel">
+                <div class="testimonial__desc">
+                  Contratei a Task para gestão de resíduos na minha empresa e foi a melhor decisão! Serviço impecável e equipe super profissional. Recomendo a todos! #TaskGestãoDeResíduos #Satisfeita
+                </div>
+              </div><!-- /.testimonial-panel -->
+            </div><!-- /. testimonial-box -->
+          </div><!-- /.col-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.testimonials -->
+
+    <!-- ======================
+    Cta Layout1 
+    ========================= -->
+    <section class="cta-layout1 pt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="cta__item d-flex">
+              <div class="cta__icon custom-icon">
+                <img src="assets/images/icons/recolha planificada.svg" alt="" width="90" height="90">
+              </div><!-- /.cta__icon -->
+              <div class="cta__body">
+                <h4 class="cta__title">Temos melhores Planos de Recolha de Lixo</h4>
+                <p class="cta__desc">Colaboramos com você para projectar e entregar um plano de Recolha de lixo que atenda as suas necessidades.</p>
+                <a href="pricing.html" class="btn btn__link btn__primary">
+                  <i class="icon-arrow-right"></i>
+                  <span>Veja todos os planos</span>
+                </a>
+                
+              </div><!-- /.cta__body -->
+            </div><!-- /.cta__item -->
+          </div><!-- /.col-md-6 -->
+          <div class="col-sm-12 col-md-6">
+            <div class="cta__item d-flex">
+              <div class="cta__icon custom-icon">
+                <img src="assets/images/icons/Duvidas.svg" alt="" width="90" height="90">
+              </div><!-- /.cta__icon -->
+              <div class="cta__body">
+                <h4 class="cta__title">Tenha Exclarecimento de Algumas dúvidas</h4>
+                <p class="cta__desc">Veja quais são as questões que muitas pessoas tem quando visitam o nosso Web.</p>
+                <a href="faqs.html" class="btn btn__link btn__primary">
+                  <i class="icon-arrow-right"></i>
+                  <span>Exclarecer Dúvidas</span>
+                </a>
+              </div><!-- /.cta__body -->
+            </div><!-- /.cta__item -->
+          </div><!-- /.col-md-6 -->
+        </div><!-- /.cta -->
+      </div><!-- /.container -->
+    </section><!-- /.cta layout1 -->
+
+    <!-- =========================== 
+      contact layout 2
+    ============================= -->
+    <section class="contact-layout2 pb-0 bg-overlay bg-overlay-primary-gradient">
+      <div class="bg-img"><img src="assets/images/banners/2.jpg" alt=""></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+            <div class="col-inner">
+              <div class="heading-layout2 heading-light mb-60">
+                <h2 class="heading__subtitle">Garanta que o seu lixo esteja no lugar certo!</h2>
+                <h3 class="heading__title">ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.
+                </h3>
+                <p class="heading__desc">Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas. 
+                </p>
+              </div><!-- /.heading -->
+              <div class="row fancybox-light">
+                <!-- fancybox item #1 -->
+                <div class="col-sm-4">
+                  <div class="fancybox-item">
+                    <div class="fancybox__icon">
+                      <img src="assets/images/icons/ambiente saudavel.svg" alt="" width="90" height="90">
+                    </div><!-- /.fancybox-icon -->
+                    <div class="fancybox__content">
+                      <h4 class="fancybox__title mb-0">Ambiente Saudável</h4>
+                    </div><!-- /.fancybox-content -->
+                  </div><!-- /.fancybox-item -->
+                </div><!-- /.col-sm-4 -->
+                <!-- fancybox item #2 -->
+                <div class="col-sm-4">
+                  <div class="fancybox-item">
+                    <div class="fancybox__icon">
+                      <img src="assets/images/icons/confiança.svg" alt="" width="90" height="90">
+                    </div><!-- /.fancybox-icon -->
+                    <div class="fancybox__content">
+                      <h4 class="fancybox__title mb-0">Transparência & Confiança</h4>
+                    </div><!-- /.fancybox-content -->
+                  </div><!-- /.fancybox-item -->
+                </div><!-- /.col-sm-4 -->
+                <!-- fancybox item #3 -->
+                <div class="col-sm-4">
+                  <div class="fancybox-item">
+                    <div class="fancybox__icon">
+                      <img src="assets/images/icons/tempo economizado.svg" alt="" width="90" height="90">
+                    </div><!-- /.fancybox-icon -->
+                    <div class="fancybox__content">
+                      <h4 class="fancybox__title mb-0"> Tempo Economizado</h4>
+                    </div><!-- /.fancybox-content -->
+                  </div><!-- /.fancybox-item -->
+                </div><!-- /.col-sm-4 -->
+              </div><!-- /.row -->
+            </div>
+          </div><!-- /.col-xl-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+            <div class="contact-panel">
+              <form class="contact-panel__form" method="post" action="assets/php/contact.php" id="contactForm"
+                novalidate="novalidate">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
+                  </div> <!-- /.col-lg-12 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Nome" id="contact-name" name="contact-name"
+                        required>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email" id="contact-email"
+                        name="contact-email" required>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Telefone" id="contact-Phone"
+                        name="contact-phone">
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Localização" id="contact-address"
+                        name="contact-address" required>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-12">
+                    <span class="font-weight-bold color-heading d-block mb-15 mt-10">SERVIÇOS</span>
+                  </div><!-- /.col-12 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="0">Recolha de Lixo?</option>
+                        <option value="1">1 vez por semana</option>
+                        <option value="1">2 vezes por semana</option>
+                      </select>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="0">Banheiro Móvel?</option>
+                        <option value="1">1 Banheiro</option>
+                        <option value="1">2+ Banheiros</option>
+                      </select>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="0">Balde de Lixo?</option>
+                        <option value="1">1 Balde</option>
+                        <option value="2">2+ Baldes</option>
+                      </select>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="0">Gestão de Resíduos Perigosos?</option>
+                      </select>
+                    </div>
+                  </div><!-- /.col-sm-6 -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="0">Limpeza de Fossas & Edifícios?</option>
+                        <option value="1">Limpeza de Fossa</option>
+                        <option value="2">Limpeza de Edifício</option>
+                        <option value="3">Limpeza de Fossa e Edifício</option>
+                      </select>
+                    </div>
+                  <div class="col-12">
+                    <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
+                    <div class="d-flex">
+                      <div class="form-group input-radio mr-30">
+                        <label class="label-radio">Todos
+                          <input type="radio" name="contact" checked>
+                          <span class="radio-indicator"></span>
+                        </label>
+                      </div><!-- /.input-radio -->
+                      <div class="form-group input-radio mr-30">
+                        <label class="label-radio">Email
+                          <input type="radio" name="contact">
+                          <span class="radio-indicator"></span>
+                        </label>
+                      </div><!-- /.input-radio -->
+                      <div class="form-group input-radio">
+                        <label class="label-radio">Telefone
+                          <input type="radio" name="contact">
+                          <span class="radio-indicator"></span>
+                        </label>
+                      </div><!-- /.input-radio -->
+                    </div>
+                    <button type="submit" class="btn btn__secondary btn__block">
+                      <i class="icon-arrow-right"></i> <span>SUBMETER</span>
+                    </button>
+                    <div class="contact-result"></div>
+                  </div><!-- /.col-12 -->
+                </div><!-- /.row -->
+              </form>
+            </div>
+          </div><!-- /.col-xl-6 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.contact layout 2 -->
+
+    <!-- =====================
+         Clients
+      ======================== -->
+    <section class="clients clients-layout2 border-bottom py-0">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="slick-carousel"
+              data-slick='{"slidesToShow": 3, "arrows": false, "dots": false, "autoplay": true,"autoplaySpeed": 2000, "infinite": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 3}}, {"breakpoint": 767, "settings": {"slidesToShow": 3}}, {"breakpoint": 480, "settings": {"slidesToShow": 2}}]}'>
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/1.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/2.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/3.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/4.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/5.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/6.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/3.png" alt="client"></a>
+              </div><!-- /.client -->
+              <div class="client">
+                <a href="#"><img src="assets/images/clients/4.png" alt="client"></a>
+              </div><!-- /.client -->
+            </div><!-- /.carousel -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <strong class="text-center d-block mt-40">Receba uma Cotação precisa em até 2 a 5 dias após preencher o
+formulário nesta página. Ou ligue para nós:
+              <a href="https://wa.me/+258877337315" class="text-underlined-primary">+258877337315</a>
+            </strong>
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.clients -->
+
+    <!-- ========================
+      Footer
+    ========================== -->
+    <footer class="footer">
+      <div class="footer-primary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
+              <h6 class="footer-widget-title">Contacto Rápido</h6>
+              <div class="footer-widget-content">
+                <p class="mb-20">Caso tenha alguma dúvida ou precise de ajuda, sinta-se à vontade para entrar em contato com nossa equipe.</p>
+                <div class="contact__number d-flex align-items-center mb-30">
+                  <i class="icon-phone"></i>
+                  <a href="https://wa.me/+258877337315" class="color-primary">+258877337315</a>
+                </div><!-- /.contact__numbr -->
+                <p class="mb-20">Estamos em Moz: Bairro Malhangalene, Rua do trago, porta n° 16B r/c, Maputo, Mozambique 4345</p>
+                <a href="#" class="btn__location">
+                  <i class="icon-location"></i>
+                  <span>Visite-nos</span>
+                </a>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-3 -->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
+              <h6 class="footer-widget-title">Empresa</h6>
+              <div class="footer-widget-content">
+                <nav>
+                  <ul class="list-unstyled">
+                    <li><a href="about-us.html">Sobre Nós</a></li>
+                    <li><a href="team.html">Nossa Team</a></li>
+                    <li><a href="faqs.html">Dúvidas</a></li>
+                    <li><a href="pricing.html">Preços e Planos</a></li>
+                    <li><a href="projects-grid.html">Nossos Projectos</a></li>
+                    <li><a href="contact-us.html">Contactos</a></li>
+                  </ul>
+                </nav>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-2 -->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
+              <h6 class="footer-widget-title">Serviços</h6>
+              <div class="footer-widget-content">
+                <nav>
+                  <ul class="list-unstyled">
+                    <li><a href="lixo.html">Recolha de Lixo</a></li>
+                    <li><a href="banheiros.html">Banheiros Móveis</a></li>
+                    <li><a href="baldes.html">Baldes de Lixo</a></li>
+                    <li><a href="residuos.html">Resíduos Perigosos</a></li>
+                    <li><a href="fossaseedificios.html">Limpeza de Fossas</a></li>
+                    <li><a href="lixoplanificado.html">Recolha Planificada</a></li>
+                    <li><a href="pricing.html">Planos de Recolha de Lixo</a></li>
+                </a>
+                  </ul>
+                </nav>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-2 -->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
+              <h6 class="footer-widget-title">Supporte</h6>
+              <div class="footer-widget-content">
+                <nav>
+                  <ul class="list-unstyled">
+                    <li><a href="terms.html">Termos & Condições</a></li>
+                    <li><a href="privacy.html">Política de Privacidade</a></li>
+                  </ul>
+                </nav>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-2 -->
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
+              <h6 class="footer-widget-title">Catálogo de Serviços</h6>
+              <div class="footer-widget-content">
+                <a href="request-quote.html" class="btn btn__primary btn__primary-style2 btn__download mb-60">
+                  <i class="icon-download"></i>
+                  <span>Baixar PDF</span>
+                </a>
+                <ul class="social-icons list-unstyled">
+                  <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                </ul><!-- /.social-icons -->
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-3 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-primary -->
+      <div class="footer-copyrights">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
+              <nav>
+                <ul class="copyright__nav d-flex flex-wrap list-unstyled mb-0">
+                  <li><a href="terms.html">Termos & Condições</a></li> <li><a href="privacy.html">Política de Privacidade</a></li>
+                </ul>
+              </nav>
+              <p class="mb-0">
+                <span class="color-gray">&copy; 2025 Task Environmental Service, Todos os Direitos Reservados. Desenvolvido por</span>
+                <a href="https://www.linkedin.com/in/severiano-mombe-b1067b28a/">Severiano Mombe</a>
+              </p>
+            </div><!-- /.col-lg-12 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-copyrights-->
+    </footer><!-- /.Footer -->
+    <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
+
+    <!-- Botões flutuantes -->
+    <a href="https://wa.me/+258877337315" class="float-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <style>
+      .float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .float-btn:hover {
+            background-color: #b5d91f;
+            transform: scale(1.1);
+            color:#085b57;
+        }
+        
+        .whatsapp-btn {
+            right: 30px;
+            bottom: 110px;
+            background-color: #2aac3f;
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem 2rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transition: left 0.3s;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .slider {
+                height: 400px;
+            }
+        }
+        /* Defina as regras de responsividade para as classes */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col-sm-12, .col-md-12, .col-lg-12 {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .col-sm-12, .col-md-12, .col-lg-12 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .col-sm-12, .col-md-12, .col-lg-12 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+        
+    </style>
+
+  </div><!-- /.wrapper -->
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/plugins.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.contact-panel__form');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Coletar dados do formulário
+    const formData = {
+      nome: document.getElementById('contact-name').value,
+      email: document.getElementById('contact-email').value,
+      telefone: document.getElementById('contact-Phone').value,
+      localizacao: document.getElementById('contact-address').value,
+      servicos: {
+        recolhaLixo: form.querySelector('select:nth-of-type(1)').value,
+        banheiroMovel: form.querySelector('select:nth-of-type(2)').value,
+        baldeLixo: form.querySelector('select:nth-of-type(3)').value,
+        residuosPerigosos: form.querySelector('select:nth-of-type(4)').value,
+        limpezaFossas: form.querySelector('select:nth-of-type(5)').value
+      },
+      contactoPreferido: form.querySelector('input[name="contact"]:checked').parentElement.textContent.trim()
+    };
+    
+    // Gerar PDF
+    generatePDF(formData);
+    
+    // Simular envio por email (em produção, você usaria um backend real)
+    simulateEmailSend(formData);
+    
+    // Mostrar mensagem de sucesso
+    showSuccessMessage();
+  });
+  
+  function generatePDF(formData) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Logo da empresa
+    doc.addImage('assets/images/logo/Task logo.svg', 'SVG', 15, 15, 40, 15);
+    
+    // Título
+    doc.setFontSize(18);
+    doc.setTextColor(8, 91, 87);
+    doc.text('COTAÇÃO DE SERVIÇOS', 105, 30, null, null, 'center');
+    
+    // Linha divisória
+    doc.setDrawColor(8, 91, 87);
+    doc.setLineWidth(0.5);
+    doc.line(15, 35, 195, 35);
+    
+    // Dados do cliente
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('DADOS DO CLIENTE', 15, 45);
+    
+    doc.setFontSize(10);
+    doc.text(`Nome: ${formData.nome}`, 15, 55);
+    doc.text(`Email: ${formData.email}`, 15, 60);
+    doc.text(`Telefone: ${formData.telefone}`, 15, 65);
+    doc.text(`Localização: ${formData.localizacao}`, 15, 70);
+    doc.text(`Contacto Preferido: ${formData.contactoPreferido}`, 15, 75);
+    
+    // Serviços solicitados
+    doc.setFontSize(12);
+    doc.text('SERVIÇOS SOLICITADOS', 15, 85);
+    
+    // Tabela de serviços
+    doc.autoTable({
+      startY: 90,
+      head: [['Serviço', 'Opção Escolhida']],
+      body: [
+        ['Recolha de Lixo', formData.servicos.recolhaLixo],
+        ['Banheiro Móvel', formData.servicos.banheiroMovel],
+        ['Balde de Lixo', formData.servicos.baldeLixo],
+        ['Resíduos Perigosos', formData.servicos.residuosPerigosos],
+        ['Limpeza de Fossas/Edifícios', formData.servicos.limpezaFossas]
+      ],
+      theme: 'grid',
+      headStyles: {
+        fillColor: [8, 91, 87],
+        textColor: [255, 255, 255]
+      }
+    });
+    
+    // Rodapé
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Task Environmental Service - clients@taskservices.co.mz - +258 87 733 7315', 105, 285, null, null, 'center');
+    
+    // Salvar PDF
+    doc.save(`Cotação_${formData.nome}_${new Date().toLocaleDateString()}.pdf`);
+  }
+  
+  function simulateEmailSend(formData) {
+    // Em produção, você substituiria isso por uma chamada AJAX para seu backend
+    console.log('Simulando envio de email para clients@taskservices.co.mz com os dados:', formData);
+
+    function simulateEmailSend(formData) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // ... (geração do PDF conforme já existente)
+  // Recomendo reaproveitar sua função `generatePDF(formData)` acima
+
+  // gerar PDF como base64
+  const pdfOutput = doc.output('datauristring');
+  const pdfBase64 = pdfOutput.split(',')[1];
+
+  // Enviar para o PHP
+  fetch('assets/php/send-quote.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...formData, pdfBase64 })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    showSuccessMessage(); // Mostrar mensagem ao usuário
+  })
+  .catch(err => {
+    alert("Erro ao enviar cotação. Por favor, tente novamente.");
+    console.error(err);
+  });
+}
+
+    
+    // Aqui você faria uma requisição para seu servidor que enviaria o email de fato
+    // Exemplo com fetch:
+    /*
+    fetch('/send-quote-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Email enviado:', data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar email:', error);
+    });
+    */
+  }
+  
+  function showSuccessMessage() {
+    const resultDiv = document.querySelector('.contact-result');
+    resultDiv.innerHTML = `
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Cotação enviada com sucesso!</h4>
+        <p>O PDF com sua cotação foi baixado automaticamente e uma cópia foi enviada para nosso email. Entraremos em contato em breve para confirmar os detalhes.</p>
+        <hr>
+        <p class="mb-0">Caso não tenha recebido o PDF, <a href="#" id="download-again">clique aqui</a> para baixar novamente.</p>
+      </div>
+    `;
+    
+    // Rolagem suave para a mensagem
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+    
+    // Adicionar evento para baixar novamente
+    document.getElementById('download-again').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Você precisaria armazenar os dados do formulário para regenerar o PDF
+      // ou armazenar o PDF gerado anteriormente
+    });
+  }
+});
+</script>
+
+<script>
+// Sistema de Tradução
+const translations = {
+  "pt": {
+    // Header
+    "Início": "Início",
+    "Empresa": "Empresa",
+    "Sobre Nós": "Sobre Nós",
+    "Nossa Team": "Nossa Team",
+    "Preços & Planos": "Preços & Planos",
+    "Dúvidas & Ajuda": "Dúvidas & Ajuda",
+    "Galeria": "Galeria",
+    "Serviços": "Serviços",
+    "Recolha Esporádica de Lixo": "Recolha Esporádica de Lixo",
+    "Venda & Aluguer de Banheiros Móveis": "Venda & Aluguer de Banheiros Móveis",
+    "Venda & Aluguer de Baldes de Lixo": "Venda & Aluguer de Baldes de Lixo",
+    "Gestão de Resíduos Perigososs": "Gestão de Resíduos Perigososs",
+    "Limpeza de Fossas & Edifícios": "Limpeza de Fossas & Edifícios",
+    "Recolha de Lixo Planificada": "Recolha de Lixo Planificada",
+    "Projectos": "Projectos",
+    "Acção Social": "Acção Social",
+    "Novidades": "Novidades",
+    "Blog": "Blog",
+    "Contactos": "Contactos",
+    "PEDIR COTAÇÃO": "PEDIR COTAÇÃO",
+    
+    // Slider
+    "Serviço diversificado e 100% Moz": "Serviço diversificado e 100% Moz",
+    "GESTÃO DE RESÍDUOS SÓLIDOS!": "GESTÃO DE RESÍDUOS SÓLIDOS!",
+    "Da Colecta à Destinação Responsável: Soluções Sustentáveis para um Futuro Limpo.": "Da Colecta à Destinação Responsável: Soluções Sustentáveis para um Futuro Limpo.",
+    "VEJA MAIS": "VEJA MAIS",
+    "BANHEIROS MÓVEIS!": "BANHEIROS MÓVEIS!",
+    "Higiene, Conforto e Sustentabilidade para Obras, Eventos e Festas.": "Higiene, Conforto e Sustentabilidade para Obras, Eventos e Festas.",
+    "BALDES DE LIXO!": "BALDES DE LIXO!",
+    "Variedade e Qualidade em Baldes de Lixo Para Casas, Empresas, Comércio e Indústrias.": "Variedade e Qualidade em Baldes de Lixo Para Casas, Empresas, Comércio e Indústrias.",
+    
+    // About Section
+    "Liderando a Transformação na Gestão de Resíduos Sólidos": "Liderando a Transformação na Gestão de Resíduos Sólidos",
+    "Da Colecta a destinação final: O futuro é verde & ele começa com as escolhas que fazemos hoje!": "Da Colecta a destinação final: O futuro é verde & ele começa com as escolhas que fazemos hoje!",
+    "Clientes Satisfeitos": "Clientes Satisfeitos",
+    "Anos de Experiência": "Anos de Experiência",
+    "Parcerias Conquistadas": "Parcerias Conquistadas",
+    "Impulsionamos a transição para sistemas de gestão de resíduos mais inteligentes, eficientes e ambientalmente responsáveis. Transformamos desafios ambientais em oportunidades sustentáveis — esse é o nosso propósito!": "Impulsionamos a transição para sistemas de gestão de resíduos mais inteligentes, eficientes e ambientalmente responsáveis. Transformamos desafios ambientais em oportunidades sustentáveis — esse é o nosso propósito!",
+    "Desafio Global-Situação dos resíduos em África": "Desafio Global-Situação dos resíduos em África",
+    "Gerar valor acima do dinheiro do cliente , isto é, entregar mais do que o cliente paga!": "Gerar valor acima do dinheiro do cliente , isto é, entregar mais do que o cliente paga!",
+    "Veja mais": "Veja mais",
+    
+    // Services
+    "Tornando o amanhã diferente hoje.": "Tornando o amanhã diferente hoje.",
+    "Transformamos resíduos em responsabilidade & garantimos que o Seu lixo esteja no lugar certo!": "Transformamos resíduos em responsabilidade & garantimos que o Seu lixo esteja no lugar certo!",
+    "Soluções completas e personalizadas em gestão de resíduos sólidos, desde a coleta até o destino final, com foco na sustentabilidade, eficiência e conformidade ambiental.": "Soluções completas e personalizadas em gestão de resíduos sólidos, desde a coleta até o destino final, com foco na sustentabilidade, eficiência e conformidade ambiental.",
+    "Seu lixo no lugar certo!": "Seu lixo no lugar certo!",
+    "Higiene onde precisar!": "Higiene onde precisar!",
+    "Organização e limpeza!": "Organização e limpeza!",
+    "Manuseio Seguro !": "Manuseio Seguro !",
+    "Higienização Profissional!": "Higienização Profissional!",
+    "Opções Flexíveis": "Opções Flexíveis",
+    
+    // Features
+    "TASK ENVIRONMENTAL SERVICE": "TASK ENVIRONMENTAL SERVICE",
+    "Somos uma empresa moçambicana especializada em soluções integradas de gestão de resíduos. Actuamos com foco na eficiência, sustentabilidade e inovação, oferecendo serviços diversificados que atendem às necessidades de empresas e comunidades. Nosso objectivo é nos tornar na maior empresa privada de gestão de resíduos sólidos em África, gerando valor real que vai além do investimento financeiro.": "Somos uma empresa moçambicana especializada em soluções integradas de gestão de resíduos. Actuamos com foco na eficiência, sustentabilidade e inovação, oferecendo serviços diversificados que atendem às necessidades de empresas e comunidades. Nosso objectivo é nos tornar na maior empresa privada de gestão de resíduos sólidos em África, gerando valor real que vai além do investimento financeiro.",
+    "Juntos, somos mais firmes no melhoramento do meio ambiente": "Juntos, somos mais firmes no melhoramento do meio ambiente",
+    "Missão": "Missão",
+    "Visão": "Visão",
+    "Valores": "Valores",
+    "SEJA <br> RESPONSÁVEL": "SEJA <br> RESPONSÁVEL",
+    "Livre o meio ambiente da poluição!": "Livre o meio ambiente da poluição!",
+    
+    // Portfolio
+    "PROJECTO TASK CLEAN": "PROJECTO TASK CLEAN",
+    "Parceria feita com o município de Marracuene-Guava que visa fazer limpeza nas ruas e entradas principais do Bairro de Guava para melhorar o ambiente em que se vive": "Parceria feita com o município de Marracuene-Guava que visa fazer limpeza nas ruas e entradas principais do Bairro de Guava para melhorar o ambiente em que se vive",
+    "Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados": "Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados",
+    
+    // Testimonials
+    "Um Olhar dos nossos Clientes": "Um Olhar dos nossos Clientes",
+    "Nossos clientes compartilham suas experiências & percepções": "Nossos clientes compartilham suas experiências & percepções",
+    
+    // CTA
+    "Tenha um Plano de Recolha de Lixo": "Tenha um Plano de Recolha de Lixo",
+    "Colaboramos com você para projectar e entregar um plano de Recolha de lixo que atenda as suas necessidades.": "Colaboramos com você para projectar e entregar um plano de Recolha de lixo que atenda as suas necessidades.",
+    "Ir para o plano": "Ir para o plano",
+    "Tenha Exclarecimento de Algumas dúvidas": "Tenha Exclarecimento de Algumas dúvidas",
+    "Veja quais são as questões que muitas pessoas tem quando visitam o nosso Web.": "Veja quais são as questões que muitas pessoas tem quando visitam o nosso Web.",
+    "Exclarecer Dúvidas": "Exclarecer Dúvidas",
+    
+    // Contact Form
+    "ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.": "ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.",
+    "Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas.": "Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas.",
+    "Ambiente Saudável": "Ambiente Saudável",
+    "Transparência & Confiança": "Transparência & Confiança",
+    "Tempo Economizado": "Tempo Economizado",
+    "PEDIR COTAÇÃO SEM COMPROMISSO": "PEDIR COTAÇÃO SEM COMPROMISSO",
+    "Nome": "Nome",
+    "Email": "Email",
+    "Telefone": "Telefone",
+    "Localização": "Localização",
+    "SERVIÇOS": "SERVIÇOS",
+    "Recolha de Lixo?": "Recolha de Lixo?",
+    "1 vez por semana": "1 vez por semana",
+    "2 vezes por semana": "2 vezes por semana",
+    "Banheiro Móvel?": "Banheiro Móvel?",
+    "1 Banheiro": "1 Banheiro",
+    "2+ Banheiros": "2+ Banheiros",
+    "Balde de Lixo?": "Balde de Lixo?",
+    "1 Balde": "1 Balde",
+    "2+ Baldes": "2+ Baldes",
+    "Gestão de Resíduos Perigosos?": "Gestão de Resíduos Perigosos?",
+    "Limpeza de Fossas & Edifícios?": "Limpeza de Fossas & Edifícios?",
+    "Limpeza de Fossa": "Limpeza de Fossa",
+    "Limpeza de Edifício": "Limpeza de Edifício",
+    "Limpeza de Fossa e Edifício": "Limpeza de Fossa e Edifício",
+    "Contacto Preferido": "Contacto Preferido",
+    "Todos": "Todos",
+    "SUBMETER": "SUBMETER",
+    
+    // Clients Section
+    "Receba uma Cotação precisa em até 2 a 5 dias após preencher o formulário nesta página. Ou ligue para nós:": "Receba uma Cotação precisa em até 2 a 5 dias após preencher o formulário nesta página. Ou ligue para nós:",
+    
+    // Footer
+    "Contacto Rápido": "Contacto Rápido",
+    "Caso tenha alguma dúvida ou precise de ajuda, sinta-se à vontade para entrar em contato com nossa equipe.": "Caso tenha alguma dúvida ou precise de ajuda, sinta-se à vontade para entrar em contato com nossa equipe.",
+    "Estamos em Moz: Bairro Malhangalene, Rua do trago, porta n° 16B r/c, Maputo, Mozambique 4345": "Estamos em Moz: Bairro Malhangalene, Rua do trago, porta n° 16B r/c, Maputo, Mozambique 4345",
+    "Visite-nos": "Visite-nos",
+    "Supporte": "Supporte",
+    "Termos & Condições": "Termos & Condições",
+    "Catálogo de Serviços": "Catálogo de Serviços",
+    "Baixar PDF": "Baixar PDF",
+    "Todos os Direitos Reservados. Desenvolvido por": "Todos os Direitos Reservados. Desenvolvido por"
+  },
+  "en": {
+    // Header
+    "Início": "Home",
+    "Empresa": "Company",
+    "Sobre Nós": "About Us",
+    "Nossa Team": "Our Team",
+    "Preços & Planos": "Pricing & Plans",
+    "Dúvidas & Ajuda": "FAQs & Help",
+    "Galeria": "Gallery",
+    "Serviços": "Services",
+    "Recolha Esporádica de Lixo": "Occasional Waste Collection",
+    "Venda & Aluguer de Banheiros Móveis": "Sale & Rental of Mobile Toilets",
+    "Venda & Aluguer de Baldes de Lixo": "Sale & Rental of Trash Bins",
+    "Gestão de Resíduos Perigososs": "Hazardous Waste Management",
+    "Limpeza de Fossas & Edifícios": "Septic Tank & Building Cleaning",
+    "Recolha de Lixo Planificada": "Scheduled Waste Collection",
+    "Projectos": "Projects",
+    "Acção Social": "Social Action",
+    "Novidades": "News",
+    "Blog": "Blog",
+    "Contactos": "Contacts",
+    "PEDIR COTAÇÃO": "REQUEST QUOTE",
+    
+    // Slider
+    "Serviço diversificado e 100% Moz": "Diversified and 100% Mozambican Service",
+    "GESTÃO DE RESÍDUOS SÓLIDOS!": "SOLID WASTE MANAGEMENT!",
+    "Da Colecta à Destinação Responsável: Soluções Sustentáveis para um Futuro Limpo.": "From Collection to Responsible Disposal: Sustainable Solutions for a Clean Future.",
+    "VEJA MAIS": "SEE MORE",
+    "BANHEIROS MÓVEIS!": "MOBILE TOILETS!",
+    "Higiene, Conforto e Sustentabilidade para Obras, Eventos e Festas.": "Hygiene, Comfort and Sustainability for Works, Events and Parties.",
+    "BALDES DE LIXO!": "TRASH BINS!",
+    "Variedade e Qualidade em Baldes de Lixo Para Casas, Empresas, Comércio e Indústrias.": "Variety and Quality in Trash Bins for Homes, Businesses, Commerce and Industries.",
+    
+    // About Section
+    "Liderando a Transformação na Gestão de Resíduos Sólidos": "Leading the Transformation in Solid Waste Management",
+    "Da Colecta a destinação final: O futuro é verde & ele começa com as escolhas que fazemos hoje!": "From collection to final destination: The future is green & it starts with the choices we make today!",
+    "Clientes Satisfeitos": "Satisfied Customers",
+    "Anos de Experiência": "Years of Experience",
+    "Parcerias Conquistadas": "Achieved Partnerships",
+    "Impulsionamos a transição para sistemas de gestão de resíduos mais inteligentes, eficientes e ambientalmente responsáveis. Transformamos desafios ambientais em oportunidades sustentáveis — esse é o nosso propósito!": "We drive the transition to smarter, more efficient and environmentally responsible waste management systems. We transform environmental challenges into sustainable opportunities - that's our purpose!",
+    "Desafio Global-Situação dos resíduos em África": "Global Challenge - Waste Situation in Africa",
+    "Gerar valor acima do dinheiro do cliente , isto é, entregar mais do que o cliente paga!": "Generate value above customer money, that is, deliver more than the customer pays!",
+    "Veja mais": "See More",
+    
+    // Services
+    "Tornando o amanhã diferente hoje.": "Making tomorrow different today.",
+    "Transformamos resíduos em responsabilidade & garantimos que o Seu lixo esteja no lugar certo!": "We transform waste into responsibility & ensure your trash is in the right place!",
+    "Soluções completas e personalizadas em gestão de resíduos sólidos, desde a coleta até o destino final, com foco na sustentabilidade, eficiência e conformidade ambiental.": "Complete and customized solutions in solid waste management, from collection to final destination, with a focus on sustainability, efficiency and environmental compliance.",
+    "Seu lixo no lugar certo!": "Your trash in the right place!",
+    "Higiene onde precisar!": "Hygiene where you need it!",
+    "Organização e limpeza!": "Organization and cleanliness!",
+    "Manuseio Seguro !": "Safe Handling!",
+    "Higienização Profissional!": "Professional Cleaning!",
+    "Opções Flexíveis": "Flexible Options",
+    
+    // Features
+    "TASK ENVIRONMENTAL SERVICE": "TASK ENVIRONMENTAL SERVICE",
+    "Somos uma empresa moçambicana especializada em soluções integradas de gestão de resíduos. Actuamos com foco na eficiência, sustentabilidade e inovação, oferecendo serviços diversificados que atendem às necessidades de empresas e comunidades. Nosso objectivo é nos tornar na maior empresa privada de gestão de resíduos sólidos em África, gerando valor real que vai além do investimento financeiro.": "We are a Mozambican company specialized in integrated waste management solutions. We operate with a focus on efficiency, sustainability and innovation, offering diversified services that meet the needs of companies and communities. Our goal is to become the largest private solid waste management company in Africa, generating real value that goes beyond financial investment.",
+    "Juntos, somos mais firmes no melhoramento do meio ambiente": "Together, we are stronger in improving the environment",
+    "Missão": "Mission",
+    "Visão": "Vision",
+    "Valores": "Values",
+    "SEJA <br> RESPONSÁVEL": "BE <br> RESPONSIBLE",
+    "Livre o meio ambiente da poluição!": "Free the environment from pollution!",
+    
+    // Portfolio
+    "PROJECTO TASK CLEAN": "TASK CLEAN PROJECT",
+    "Parceria feita com o município de Marracuene-Guava que visa fazer limpeza nas ruas e entradas principais do Bairro de Guava para melhorar o ambiente em que se vive": "Partnership made with the municipality of Marracuene-Guava that aims to clean the streets and main entrances of the Guava Neighborhood to improve the living environment",
+    "Recolha de Lixo e Limpeza de Contentores para garantir que o lixo esteja bem enquadrado, uma vez que estes recipientes encontravam-se cheios e descuidados": "Waste Collection and Container Cleaning to ensure that the waste is well framed, as these containers were full and neglected",
+    
+    // Testimonials
+    "Um Olhar dos nossos Clientes": "A Look from Our Customers",
+    "Nossos clientes compartilham suas experiências & percepções": "Our customers share their experiences & perceptions",
+    
+    // CTA
+    "Tenha um Plano de Recolha de Lixo": "Have a Waste Collection Plan",
+    "Colaboramos com você para projectar e entregar um plano de Recolha de lixo que atenda as suas necessidades.": "We work with you to design and deliver a waste collection plan that meets your needs.",
+    "Ir para o plano": "Go to Plan",
+    "Tenha Exclarecimento de Algumas dúvidas": "Get Clarification on Some Questions",
+    "Veja quais são as questões que muitas pessoas tem quando visitam o nosso Web.": "See what questions many people have when visiting our website.",
+    "Exclarecer Dúvidas": "Clarify Doubts",
+    
+    // Contact Form
+    "ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.": "FIND THE RIGHT SERVICE FOR YOUR NEED.",
+    "Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas.": "With our services, we guarantee that you get more than you pay, that is, your act of paying is not an expense, but an investment for the environment in which you live or work.",
+    "Ambiente Saudável": "Healthy Environment",
+    "Transparência & Confiança": "Transparency & Trust",
+    "Tempo Economizado": "Time Saved",
+    "PEDIR COTAÇÃO SEM COMPROMISSO": "REQUEST QUOTE WITH NO OBLIGATION",
+    "Nome": "Name",
+    "Email": "Email",
+    "Telefone": "Phone",
+    "Localização": "Location",
+    "SERVIÇOS": "SERVICES",
+    "Recolha de Lixo?": "Waste Collection?",
+    "1 vez por semana": "Once a week",
+    "2 vezes por semana": "Twice a week",
+    "Banheiro Móvel?": "Mobile Toilet?",
+    "1 Banheiro": "1 Toilet",
+    "2+ Banheiros": "2+ Toilets",
+    "Balde de Lixo?": "Trash Bin?",
+    "1 Balde": "1 Bin",
+    "2+ Baldes": "2+ Bins",
+    "Gestão de Resíduos Perigosos?": "Hazardous Waste Management?",
+    "Limpeza de Fossas & Edifícios?": "Septic Tank & Building Cleaning?",
+    "Limpeza de Fossa": "Septic Tank Cleaning",
+    "Limpeza de Edifício": "Building Cleaning",
+    "Limpeza de Fossa e Edifício": "Septic Tank and Building Cleaning",
+    "Contacto Preferido": "Preferred Contact",
+    "Todos": "All",
+    "SUBMETER": "SUBMIT",
+    
+    // Clients Section
+    "Receba uma Cotação precisa em até 2 a 5 dias após preencher o formulário nesta página. Ou ligue para nós:": "Get an accurate Quote within 2 to 5 days after filling out the form on this page. Or call us:",
+    
+    // Footer
+    "Contacto Rápido": "Quick Contact",
+    "Caso tenha alguma dúvida ou precise de ajuda, sinta-se à vontade para entrar em contato com nossa equipe.": "If you have any questions or need help, feel free to contact our team.",
+    "Estamos em Moz: Bairro Malhangalene, Rua do trago, porta n° 16B r/c, Maputo, Mozambique 4345": "We are in Moz: Malhangalene Neighborhood, Rua do trago, door n° 16B r/c, Maputo, Mozambique 4345",
+    "Visite-nos": "Visit Us",
+    "Supporte": "Support",
+    "Termos & Condições": "Terms & Conditions",
+    "Catálogo de Serviços": "Services Catalog",
+    "Baixar PDF": "Download PDF",
+    "Todos os Direitos Reservados. Desenvolvido por": "All Rights Reserved. Developed by"
+  }
+};
+
+// Função para mudar o idioma
+function changeLanguage(lang) {
+  // Atualizar o botão do dropdown
+  const langButton = document.getElementById('langDropdown');
+  if (lang === 'en') {
+    langButton.innerHTML = '<img src="assets/images/flags/en.png" alt="en"> <span>English</span>';
+  } else {
+    langButton.innerHTML = '<img src="assets/images/flags/pt.png" alt="pt"> <span>Português</span>';
+  }
+
+  // Traduzir todo o conteúdo
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translations[lang] && translations[lang][key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Traduzir placeholders e valores de botões
+  const inputs = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+  inputs.forEach(input => {
+    const placeholder = input.getAttribute('placeholder');
+    if (translations[lang] && translations[lang][placeholder]) {
+      input.setAttribute('placeholder', translations[lang][placeholder]);
+    }
+  });
+
+  const buttons = document.querySelectorAll('button, input[type="submit"], input[type="button"], a.btn');
+  buttons.forEach(button => {
+    const text = button.textContent.trim();
+    if (translations[lang] && translations[lang][text]) {
+      button.textContent = translations[lang][text];
+    }
+  });
+
+  // Armazenar o idioma selecionado
+  localStorage.setItem('preferredLanguage', lang);
+  
+  // Atualizar o atributo lang do HTML
+  document.documentElement.lang = lang;
+}
+
+// Carregar o idioma salvo ou padrão
+document.addEventListener('DOMContentLoaded', function() {
+  const preferredLanguage = localStorage.getItem('preferredLanguage') || 'pt';
+  changeLanguage(preferredLanguage);
+
+  // Configurar eventos dos botões de idioma
+  document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const lang = this.getAttribute('data-lang');
+      changeLanguage(lang);
+    });
+  });
+});
+</script>
+
+
+</body>
+
+</html>

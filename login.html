@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Task Environmental Service</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <style>
+/* Adicione estas novas regras CSS */
+    .alert {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    
+    .alert-danger {
+      background-color: #f8d7da;
+      color: #ff0019;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .btn:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    :root {
+      --primary-color: #085b57;
+      --secondary-color: #2aac3f;
+      --light-gray: #f5f5f5;
+      --dark-gray: #333;
+      --white: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Rubik', 'Roboto', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+    
+    .login-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .login-left {
+      flex: 1;
+      background: linear-gradient(rgba(8, 91, 87, 0.8), rgba(8, 91, 87, 0.9)), 
+                  url('assets/images/sliders/1.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      color: var(--white);
+      text-align: center;
+    }
+    
+    .login-left h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    
+    .login-left p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+    
+    .login-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    
+    .login-form-container {
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+      width: 100%;
+      max-width: 450px;
+    }
+    
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo img {
+      max-width: 150px;
+      height: auto;
+    }
+    
+    .login-form h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--dark-gray);
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    .forgot-password {
+      display: block;
+      text-align: right;
+      margin-top: 0.5rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .forgot-password:hover {
+      text-decoration: underline;
+      color: var(--secondary-color);
+    }
+    
+    .divider {
+      margin: 1.5rem 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #ddd;
+      z-index: 1;
+    }
+    
+    .divider span {
+      background-color: var(--white);
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+      color: #777;
+    }
+    
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f5f5f5;
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .social-btn:hover {
+      background-color: #e0e0e0;
+    }
+    
+    .register-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--dark-gray);
+    }
+    
+    .register-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .register-link a:hover {
+      text-decoration: underline;
+      color: var(--secondary-color);
+    }
+    
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+      }
+      
+      .login-left {
+        padding: 2rem 1rem;
+      }
+      
+      .login-right {
+        padding: 2rem 1rem;
+      }
+      
+      .login-form-container {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-left">
+      <h1>Bem-vindo de volta!</h1>
+      <p>Acesse sua conta para gerenciar seus serviços de gestão de resíduos e acompanhar suas solicitações.</p>
+      <img src="assets/images/logo/Task logo-white.svg" alt="Task Environmental Service" style="max-width: 200px;">
+    </div>
+    
+    <div class="login-right">
+      <div class="login-form-container">
+        <div class="logo">
+          <img src="assets/images/logo/Task logo.svg" alt="Task Environmental Service">
+        </div>
+        
+        <form class="login-form" action="login.php" method="POST">
+          <h2>Login</h2>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Digite sua senha" required>
+            <a href="forgot-password.html" class="forgot-password">Esqueceu a senha?</a>
+          </div>
+          
+          <button type="submit" class="btn">Entrar</button>
+          
+          <div class="divider"><span>ou</span></div>
+          
+          <div class="social-login">
+            <a href="https://www.facebook.com/taskservices.moz" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/taskservices.moz" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/taskservices.moz" class="social-btn"><i class="fab fa-linkedin"></i></a>
+          </div>
+          
+          <div class="register-link">
+            Não tem uma conta? <a href="register.html">Cadastre-se</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Adicione este script no final do body
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Impede o envio padrão do formulário
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const messageContainer = document.getElementById('message-container');
+      const loginBtn = document.getElementById('loginBtn');
+      
+      // Limpar mensagens anteriores
+      messageContainer.innerHTML = '';
+      
+      // Validação básica
+      if (!email || !password) {
+        showMessage('Por favor, preencha todos os campos.', 'danger');
+        return;
+      }
+      
+      // Simular loading
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Autenticando...';
+      
+      // Simular requisição AJAX (substitua por chamada real ao back-end)
+      setTimeout(() => {
+        // Esta é apenas uma simulação - em produção, faça uma requisição AJAX real para login.php
+        if (email === 'demo@taskservices.co.mz' && password === 'demo123') {
+          showMessage('Login bem-sucedido! Redirecionando...', 'success');
+          // Redirecionar após 1 segundo
+          setTimeout(() => {
+            window.location.href = 'dashboard.html'; // Altere para a página correta
+          }, 1000);
+        } else {
+          showMessage('Email ou senha incorretos. Por favor, tente novamente.', 'danger');
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'Entrar';
+        }
+      }, 1500);
+    });
+    
+    function showMessage(message, type) {
+      const messageContainer = document.getElementById('message-container');
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type}`;
+      alertDiv.textContent = message;
+      messageContainer.appendChild(alertDiv);
+      
+      // Rolagem suave para a mensagem
+      alertDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+
+
+
+</body>
+</html>

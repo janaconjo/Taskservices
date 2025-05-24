@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade - Taskservices.co.mz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <style>
+    :root {
+      --primary-color: #085b57;
+      --primary-light: rgba(8, 91, 87, 0.1);
+      --secondary-color: #2aac3f;
+      --light-gray: #f5f5f5;
+      --dark-gray: #333;
+      --white: #ffffff;
+      --text-color: #444;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Rubik', 'Roboto', sans-serif;
+      background-color: var(--white);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header {
+      background: url(assets/images/banners/14.jpg);
+      color: var(--white);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .breadcrumb {
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .breadcrumb a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    
+    .privacy-content {
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      padding: 3rem;
+      margin-top: 2rem;
+    }
+    
+    .privacy-section {
+      margin-bottom: 3rem;
+    }
+    
+    .privacy-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    
+    .privacy-section h3 {
+      color: var(--dark-gray);
+      margin: 1.5rem 0 1rem;
+    }
+    
+    .privacy-section p {
+      margin-bottom: 1rem;
+    }
+    
+    .privacy-section ul {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+    }
+    
+    .privacy-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-box {
+      background-color: var(--primary-light);
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary-color);
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .data-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .data-card {
+      background-color: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: 6px;
+      border-top: 4px solid var(--secondary-color);
+    }
+    
+    .data-card h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    
+    .footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+   .back-to-register {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .back-to-register:hover {
+      background-color: #3cff00;
+    }
+
+    .back-to-home {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .back-to-home:hover {
+      background-color: #3cff00;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .privacy-content {
+        padding: 1.5rem;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .data-types {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Políticas de Privacidade</h1>
+      <p>Como protegemos e utilizamos seus dados pessoais</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Início</a> &gt; <a href="privacy.html">Termos de Privacidade</a>
+    </div>
+    
+    <div class="privacy-content">
+      <div class="privacy-section">
+        <h2>1. Introdução</h2>
+        <p>A Task Environmental Service Lda. ("nós", "nosso") valoriza sua privacidade e está comprometida em proteger seus dados pessoais de acordo com a legislação moçambicana e melhores práticas internacionais.</p>
+        
+        <div class="highlight-box">
+          <p>Esta política explica como coletamos, usamos, armazenamos e protegemos suas informações quando você utiliza nossos serviços ou interage conosco.</p>
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>2. Dados que Coletamos</h2>
+        <p>Podemos coletar e processar os seguintes tipos de dados:</p>
+        
+        <div class="data-types">
+          <div class="data-card">
+            <h4>Dados Pessoais</h4>
+            <ul>
+              <li>Nome completo</li>
+              <li>Endereço de e-mail</li>
+              <li>Número de telefone</li>
+              <li>Endereço físico</li>
+            </ul>
+          </div>
+          
+          <div class="data-card">
+            <h4>Dados Empresariais</h4>
+            <ul>
+              <li>Nome da empresa</li>
+              <li>NIF</li>
+              <li>Endereço comercial</li>
+              <li>Dados de contato corporativo</li>
+            </ul>
+          </div>
+          
+          <div class="data-card">
+            <h4>Dados de Serviço</h4>
+            <ul>
+              <li>Histórico de serviços contratados</li>
+              <li>Registros de pagamento</li>
+              <li>Preferências de serviço</li>
+              <li>Registros de comunicação</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h3>2.1. Coleta Automática</h3>
+        <p>Quando você visita nosso site, podemos coletar automaticamente:</p>
+        <ul>
+          <li>Endereço IP e tipo de navegador</li>
+          <li>Páginas visitadas e tempo gasto</li>
+          <li>Dados de cookies (conforme nossa <a href="#cookie-policy" style="color: var(--primary-color);">Política de Cookies</a>)</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>3. Finalidades do Tratamento</h2>
+        <p>Utilizamos seus dados para:</p>
+        <ul>
+          <li>Prestar e melhorar nossos serviços</li>
+          <li>Processar pagamentos e emitir faturas</li>
+          <li>Comunicar sobre serviços e atualizações</li>
+          <li>Cumprir obrigações legais</li>
+          <li>Prevenir fraudes e garantir segurança</li>
+        </ul>
+        
+        <div class="highlight-box">
+          <p>Não vendemos nem compartilhamos seus dados pessoais com terceiros para fins de marketing sem seu consentimento explícito.</p>
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>4. Base Legal para o Tratamento</h2>
+        <p>Processamos seus dados com base em:</p>
+        <ul>
+          <li><strong>Execução contratual</strong>: Para fornecer os serviços solicitados</li>
+          <li><strong>Interesse legítimo</strong>: Para melhorar nossos serviços e segurança</li>
+          <li><strong>Consentimento</strong>: Quando obtido explicitamente para finalidades específicas</li>
+          <li><strong>Obrigação legal</strong>: Para cumprir com leis e regulamentos</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>5. Compartilhamento de Dados</h2>
+        <p>Podemos compartilhar seus dados com:</p>
+        <ul>
+          <li>Parceiros de processamento de pagamentos</li>
+          <li>Prestadores de serviços terceirizados (com contratos de confidencialidade)</li>
+          <li>Autoridades governamentais quando exigido por lei</li>
+        </ul>
+        
+        <h3>5.1. Transferências Internacionais</h3>
+        <p>Seus dados são armazenados principalmente em Moçambique. Qualquer transferência internacional seguirá padrões adequados de proteção.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>6. Segurança de Dados</h2>
+        <p>Implementamos medidas técnicas e organizacionais robustas para proteger seus dados, incluindo:</p>
+        <ul>
+          <li>Criptografia de dados sensíveis</li>
+          <li>Controles de acesso restritos</li>
+          <li>Monitoramento de segurança contínuo</li>
+          <li>Treinamento regular de equipe</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>7. Retenção de Dados</h2>
+        <p>Mantemos seus dados apenas pelo tempo necessário para:</p>
+        <ul>
+          <li>Cumprir finalidades declaradas</li>
+          <li>Atender obrigações legais (ex: registros fiscais)</li>
+          <li>Resolver disputas ou exercer direitos legais</li>
+        </ul>
+        <p>Dados anonimizados podem ser retidos para análise estatística.</p>
+      </div>
+      
+      <div class="privacy-section" id="cookie-policy">
+        <h2>8. Política de Cookies</h2>
+        <p>Nosso site utiliza cookies para:</p>
+        <ul>
+          <li>Funcionamento básico do site</li>
+          <li>Análise de tráfego</li>
+          <li>Personalização de preferências</li>
+        </ul>
+        
+        <h3>8.1. Controle de Cookies</h3>
+        <p>Você pode gerenciar preferências de cookies através das configurações do seu navegador. Algumas funcionalidades podem ficar limitadas sem cookies essenciais.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>9. Seus Direitos</h2>
+        <p>De acordo com a lei, você tem direito a:</p>
+        
+        <div class="data-types">
+          <div class="data-card">
+            <h4>Acesso</h4>
+            <p>Solicitar cópia dos dados que mantemos sobre você</p>
+          </div>
+          
+          <div class="data-card">
+            <h4>Retificação</h4>
+            <p>Corrigir dados incompletos ou inexatos</p>
+          </div>
+          
+          <div class="data-card">
+            <h4>Eliminação</h4>
+            <p>Solicitar apagamento em certas circunstâncias</p>
+          </div>
+          
+          <div class="data-card">
+            <h4>Oposição</h4>
+            <p>Opor-se a processamentos específicos</p>
+          </div>
+        </div>
+        
+        <p>Para exercer estes direitos, entre em contato através de <a href="mailto:privacidade@taskservices.co.mz" style="color: var(--primary-color);">privacidade@taskservices.co.mz</a>.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>10. Alterações a Esta Política</h2>
+        <p>Atualizaremos esta política periodicamente. Alterações significativas serão comunicadas através de nosso site ou contato direto quando aplicável.</p>
+        
+        <div class="highlight-box">
+          <p><strong>Última atualização:</strong> 01 de Janeiro de 2023</p>
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h2>11. Contato</h2>
+        <p>Para questões sobre privacidade ou para exercer seus direitos, contate nosso Encarregado de Proteção de Dados:</p>
+        <p><strong>Email:</strong> <a href="mailto:privacidade@taskservices.co.mz" style="color: var(--primary-color);">privacidade@taskservices.co.mz</a></p>
+        <p><strong>Endereço:</strong> Bairro Malhangalene, Rua do trago, porta n° 16B r/c, Maputo, Mozambique</p>
+      </div>
+      
+      <a href="register.html" class="back-to-register">Voltar a Página de Cadastro</a>
+      <a href="index.html" class="back-to-home">Voltar para O Início</a>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Início</a>
+        <a href="services.html">Serviços</a>
+        <a href="about-us.html">Sobre Nós</a>
+        <a href="contact-us.html">Contactos</a>
+        <a href="terms.html">Termos de Serviço</a>
+      </div>
+      <p>&copy; 2023 Task Environmental Service Lda. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Botão "Voltar ao topo"
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Mostrar/ocultar botão conforme rolagem
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'inline-block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    
+    // Inicialmente ocultar o botão
+    document.querySelector('.back-to-top').style.display = 'none';
+  </script>
+</body>
+</html>
