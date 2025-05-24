@@ -104,22 +104,59 @@ a[href^="mailto:"]:hover {
   }
 }
 
+
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const imagePopup = document.getElementById('imagePopup');
+  const closeBtns = document.querySelectorAll('.popup-close, .popup-close-btn');
+
+  // Mostrar popup 2 segundos e meio após o carregamento (vou actualizar aqui para 1 dia 1*60*60*2500)
+setTimeout(showImagePopup, 2500);
+  
+  // Fechar popup
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeImagePopup);
+  });
+
+  // Fechar ao clicar fora da imagem
+  imagePopup.addEventListener('click', function(e) {
+    if (e.target === imagePopup) {
+      closeImagePopup();
+    }
+  });
+
+  // Fechar com tecla ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeImagePopup();
+    }
+  });
+
+  function showImagePopup() {
+    imagePopup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImagePopup() {
+    imagePopup.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+});
+</script>
+<body>  
+    <div class="wrapper">
+    <div class="preloader">
+      <div class="loading"></div>
+      <img src="assets/images/loading-animation.gif" class="spinner" alt="Carregando" />
+    </div><!-- /.preloader -->
 
 
-
-
-<body>
-
-
-
-
-
-
-    
 <!-- =========================
      Header
 =========================== -->
+
+
 <header class="header header-layout1">
   <div class="header-topbar">
     <div class="container-fluid">
