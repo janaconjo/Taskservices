@@ -13,16 +13,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="assets/css/libraries.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
   <div class="wrapper">
-   <!--  <div class="preloader">
-      <div class="loading"></div>
-      <img src="assets/images/loading-animation.gif" class="spinner" alt="Carregando" />
-    </div>/.preloader -->
-
-    <!-- =========================
+ <!-- =========================
         Header
     =========================== -->
     <header class="header header-layout1">
@@ -353,6 +350,10 @@
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.contact layout 2 -->
+    
+    <!-- Pdf -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
     <!-- =====================
          Clients
@@ -465,10 +466,58 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
               <h6 class="footer-widget-title">Catálogo de Serviços</h6>
               <div class="footer-widget-content">
-                <a href="request-quote.html" class="btn btn__primary btn__primary-style2 btn__download mb-60">
-                  <i class="icon-download"></i>
-                  <span>Baixar PDF</span>
-                </a>
+               <button id="btnDownloadPdf" class="btn btn__primary btn__primary-style2 btn__download mb-60">
+                 <i class="icon-download"></i>
+                 <span>Baixar PDF</span>
+               </button>
+               <!-- script do pdf-->
+                 <script>
+  document.getElementById('btnDownloadPdf').addEventListener('click', async function () {
+    const { jsPDF } = window.jspdf;
+
+    const nome = document.getElementById('contact-name')?.value.trim();
+    const email = document.getElementById('contact-email')?.value.trim();
+    const telefone = document.getElementById('contact-Phone')?.value.trim();
+    const localizacao = document.getElementById('contact-address')?.value.trim();
+
+    if (!nome || !email || !localizacao) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Campos obrigatórios em falta',
+        text: 'Por favor, preencha o Nome, Email e Localização antes de baixar a cotação.',
+        confirmButtonText: 'Entendi',
+        confirmButtonColor: '#3085d6'
+      });
+      return;
+    }
+
+    const selects = document.querySelectorAll('.contact-panel__form select');
+    let servicos = "";
+    selects.forEach(select => {
+      const titulo = select.options[0].textContent.replace("?", "");
+      const escolha = select.options[select.selectedIndex]?.textContent;
+      if (select.selectedIndex > 0) {
+        servicos += `${titulo}: ${escolha}\n`;
+      }
+    });
+
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Pedido de Cotação", 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Nome: ${nome}`, 20, 35);
+    doc.text(`Email: ${email}`, 20, 45);
+    doc.text(`Telefone: ${telefone}`, 20, 55);
+    doc.text(`Localização: ${localizacao}`, 20, 65);
+    doc.text("Serviços Selecionados:", 20, 75);
+    doc.text(servicos || "Nenhum serviço selecionado.", 20, 85);
+
+    doc.save(`cotacao_${nome}.pdf`);
+  });
+</script>
+
+               
+
                 <ul class="social-icons list-unstyled">
                   <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a></li>
