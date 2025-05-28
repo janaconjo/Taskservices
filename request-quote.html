@@ -13,13 +13,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="assets/css/libraries.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- jsPDF versão clássica e mais compatível -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
 
 </head>
 
 <body>
   <div class="wrapper">
- <!-- =========================
+    <div class="preloader">
+      <div class="loading"></div>
+      <img src="assets/images/loading-animation.gif" class="spinner" alt="Carregando" />
+    </div><!-- /.preloader -->
+
+    <!-- =========================
         Header
     =========================== -->
     <header class="header header-layout1">
@@ -185,175 +191,187 @@
     </section><!-- /.page-title --><br>
 
     <br><br>
-        <!-- =========================== 
-      contact layout 2
-    ============================= -->
-    <section id="contact" class="contact-layout2 pb-0 bg-overlay bg-overlay-primary-gradient">
-      <div class="bg-img"><img src="assets/images/banners/2.jpg" alt=""></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-            <div class="col-inner">
-              <div class="heading-layout2 heading-light mb-60">
-                <h2 class="heading__subtitle">Garanta que o seu lixo esteja no lugar certo!</h2>
-                <h3 class="heading__title">ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.
-                </h3>
-                <p class="heading__desc">Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas. 
-                </p>
-              </div><!-- /.heading -->
-              <div class="row fancybox-light">
-                <!-- fancybox item #1 -->
-                <div class="col-sm-4">
-                  <div class="fancybox-item">
-                    <div class="fancybox__icon">
-                      <img src="assets/images/icons/ambiente saudavel.svg" alt="" width="90" height="90">
-                    </div><!-- /.fancybox-icon -->
-                    <div class="fancybox__content">
-                      <h4 class="fancybox__title mb-0">Ambiente Saudável</h4>
-                    </div><!-- /.fancybox-content -->
-                  </div><!-- /.fancybox-item -->
-                </div><!-- /.col-sm-4 -->
-                <!-- fancybox item #2 -->
-                <div class="col-sm-4">
-                  <div class="fancybox-item">
-                    <div class="fancybox__icon">
-                      <img src="assets/images/icons/confiança.svg" alt="" width="90" height="90">
-                    </div><!-- /.fancybox-icon -->
-                    <div class="fancybox__content">
-                      <h4 class="fancybox__title mb-0">Transparência & Confiança</h4>
-                    </div><!-- /.fancybox-content -->
-                  </div><!-- /.fancybox-item -->
-                </div><!-- /.col-sm-4 -->
-                <!-- fancybox item #3 -->
-                <div class="col-sm-4">
-                  <div class="fancybox-item">
-                    <div class="fancybox__icon">
-                      <img src="assets/images/icons/tempo economizado.svg" alt="" width="90" height="90">
-                    </div><!-- /.fancybox-icon -->
-                    <div class="fancybox__content">
-                      <h4 class="fancybox__title mb-0"> Tempo Economizado</h4>
-                    </div><!-- /.fancybox-content -->
-                  </div><!-- /.fancybox-item -->
-                </div><!-- /.col-sm-4 -->
-              </div><!-- /.row -->
-            </div>
-          </div><!-- /.col-xl-6 -->
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
-            <div class="contact-panel">
-              <form class="contact-panel__form" method="post" action="assets/php/contact.php" id="contactForm"
-                novalidate="novalidate">
-                <div class="row">
-                  <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
-                  </div> <!-- /.col-lg-12 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Nome" id="contact-name" name="contact-name"
-                        required>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email" id="contact-email"
-                        name="contact-email" required>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Telefone" id="contact-Phone"
-                        name="contact-phone">
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Localização" id="contact-address"
-                        name="contact-address" required>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-12">
-                    <span class="font-weight-bold color-heading d-block mb-15 mt-10">SERVIÇOS</span>
-                  </div><!-- /.col-12 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option value="0">Recolha de Lixo?</option>
-                        <option value="1">1 vez por semana</option>
-                        <option value="1">2 vezes por semana</option>
-                      </select>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option value="0">Banheiro Móvel?</option>
-                        <option value="1">1 Banheiro</option>
-                        <option value="1">2+ Banheiros</option>
-                      </select>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option value="0">Balde de Lixo?</option>
-                        <option value="1">1 Balde</option>
-                        <option value="2">2+ Baldes</option>
-                      </select>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option value="0">Gestão de Resíduos Perigosos?</option>
-                      </select>
-                    </div>
-                  </div><!-- /.col-sm-6 -->
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option value="0">Limpeza de Fossas & Edifícios?</option>
-                        <option value="1">Limpeza de Fossa</option>
-                        <option value="2">Limpeza de Edifício</option>
-                        <option value="3">Limpeza de Fossa e Edifício</option>
-                      </select>
-                    </div>
-                  <div class="col-12">
-                    <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
-                    <div class="d-flex">
-                      <div class="form-group input-radio mr-30">
-                        <label class="label-radio">Todos
-                          <input type="radio" name="contact" checked>
-                          <span class="radio-indicator"></span>
-                        </label>
-                      </div><!-- /.input-radio -->
-                      <div class="form-group input-radio mr-30">
-                        <label class="label-radio">Email
-                          <input type="radio" name="contact">
-                          <span class="radio-indicator"></span>
-                        </label>
-                      </div><!-- /.input-radio -->
-                      <div class="form-group input-radio">
-                        <label class="label-radio">Telefone
-                          <input type="radio" name="contact">
-                          <span class="radio-indicator"></span>
-                        </label>
-                      </div><!-- /.input-radio -->
-                    </div>
-                    <button type="submit" class="btn btn__secondary btn__block">
-                      <i class="icon-arrow-right"></i> <span>SUBMETER</span>
-                    </button>
-                    <div class="contact-result"></div>
-                  </div><!-- /.col-12 -->
-                </div><!-- /.row -->
-              </form>
-            </div>
-          </div><!-- /.col-xl-6 -->
-        </div><!-- /.row -->
-      </div><!-- /.container -->
-    </section><!-- /.contact layout 2 -->
-    
-    <!-- Pdf -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+    <!-- =========================== 
+  Contact Layout 2 Melhorado
+============================= -->
+<section class="contact-layout2 pb-0 bg-overlay bg-overlay-primary-gradient">
+  <div class="bg-img"><img src="assets/images/banners/2.jpg" alt=""></div>
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- COLUNA ESQUERDA: Texto + Ícones -->
+      <div class="col-xl-6 col-lg-12 mb-5 mb-xl-0">
+        <div class="col-inner text-white">
+          <div class="heading-layout2 heading-light mb-40">
+            <h2 class="heading__subtitle">Garanta que o seu lixo esteja no lugar certo!</h2>
+            <h3 class="heading__title">ENCONTRE O SERVIÇO CERTO PARA A SUA NECESSIDADE.</h3>
+            <p class="heading__desc">
+              Com os nossos serviços, garantimos que você receba mais do que você paga, isto é, o seu acto de pagar não é um gasto, mas sim um investimento para o ambiente em que vives ou trabalhas.
+            </p>
+          </div>
+
+          <div class="row fancybox-light">
+            <div class="col-sm-4">
+              <div class="fancybox-item">
+                <div class="fancybox__icon">
+                  <img src="assets/images/icons/ambiente saudavel.svg" alt="Ambiente Saudável" width="90" height="90">
+                </div>
+                <div class="fancybox__content">
+                  <h4 class="fancybox__title mb-0">Ambiente Saudável</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="fancybox-item">
+                <div class="fancybox__icon">
+                  <img src="assets/images/icons/confiança.svg" alt="Transparência & Confiança" width="90" height="90">
+                </div>
+                <div class="fancybox__content">
+                  <h4 class="fancybox__title mb-0">Transparência & Confiança</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="fancybox-item">
+                <div class="fancybox__icon">
+                  <img src="assets/images/icons/tempo economizado.svg" alt="Tempo Economizado" width="90" height="90">
+                </div>
+                <div class="fancybox__content">
+                  <h4 class="fancybox__title mb-0">Tempo Economizado</h4>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.row -->
+        </div><!-- /.col-inner -->
+      </div><!-- /.col-xl-6 -->
+
+      <!-- COLUNA DIREITA: Formulário -->
+      <div class="col-xl-6 col-lg-12">
+        <div class="contact-panel">
+          <form class="contact-panel__form" method="post" action="/submit-quote" id="quoteForm">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome Completo*" name="nome" required>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Email" name="email">
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input type="tel" class="form-control" placeholder="Telefone / WhatsApp*" name="telefone" required>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Localização*" name="localizacao" required>
+                </div>
+              </div>
+
+              <div class="col-12">
+  <label class="font-weight-bold mb-2 d-block">Serviços desejados *</label>
+  <div id="servicosContainer">
+    <div class="form-row mb-2 servico-item">
+      <div class="col-md-6">
+        <select class="form-control" name="tipoServico[]" required>
+          <option value="">-- Tipo de Serviço --</option>
+          <option value="Residencial">Recolha em Residências</option>
+          <option value="Condominio">Recolha em Condomínios</option>
+          <option value="Empresa">Recolha em Empresas</option>
+          <option value="Residuos Perigosos">Resíduos Perigosos</option>
+          <option value="Banheiros Moveis">Banheiros Móveis</option>
+          <option value="Contentores">Baldes de Lixo</option>
+          <option value="Fossas">Limpeza de Fossas</option>
+          <option value="Pos Obra">Limpeza Pós-Obra</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" name="planoServico[]">
+          <option value="">-- Plano --</option>
+          <option value="Básico">Básico</option>
+          <option value="Standard">Standard</option>
+          <option value="Premium">Premium</option>
+          <option value="Sob Cotação">Sob Consulta</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-sm btn-danger removeServico">X Remover serviço</button>
+      </div>
+  
+    </div>
+  </div>
+  <button type="button" class="btn btn-sm btn-primary mt-2" id="addServico">+ Adicionar mais Serviços</button>
+</div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <textarea class="form-control" name="detalhes" rows="4" placeholder="Observações / Especificações"></textarea>
+                </div>
+              </div>
+
+              <!-- Resumo da Cotação -->
+              <div class="col-12">
+                <div class="quote-summary bg-light p-3 mt-3 mb-3">
+                  <h5>Resumo da Cotação</h5>
+                  <div id="quoteDetails"></div>
+                  <div class="total-price mt-2">
+                    <strong>Total Estimado: <span id="totalPrice">MT 0</span></strong>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
+                <div class="d-flex">
+                  <div class="form-group input-radio mr-30">
+                    <label class="label-radio">Todos
+                      <input type="radio" name="contact" checked>
+                      <span class="radio-indicator"></span>
+                    </label>
+                  </div>
+                  <div class="form-group input-radio mr-30">
+                    <label class="label-radio">Email
+                      <input type="radio" name="contact">
+                      <span class="radio-indicator"></span>
+                    </label>
+                  </div>
+                  <div class="form-group input-radio">
+                    <label class="label-radio">Telefone
+                      <input type="radio" name="contact">
+                      <span class="radio-indicator"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn__secondary btn__block">
+                  <i class="icon-arrow-right"></i> <span>ENVIAR COTAÇÃO</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div><!-- /.contact-panel -->
+      </div><!-- /.col-xl-6 -->
+
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</section><!-- /.contact-layout2 -->
+
+ 
 
     <!-- =====================
          Clients
@@ -466,57 +484,89 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
               <h6 class="footer-widget-title">Catálogo de Serviços</h6>
               <div class="footer-widget-content">
-               <button id="btnDownloadPdf" class="btn btn__primary btn__primary-style2 btn__download mb-60">
-                 <i class="icon-download"></i>
-                 <span>Baixar PDF</span>
-               </button>
-               <!-- script do pdf-->
-                 <script>
-  document.getElementById('btnDownloadPdf').addEventListener('click', async function () {
-    const { jsPDF } = window.jspdf;
+               <a href="#" id="btnBaixarPDF" class="btn btn__primary btn__primary-style2 btn__download mb-60">
+               <i class="icon-download"></i>
+              <span>Baixar PDF</span>
+              </a>
+              <!-- script de pdf-->
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    const nome = document.getElementById('contact-name')?.value.trim();
-    const email = document.getElementById('contact-email')?.value.trim();
-    const telefone = document.getElementById('contact-Phone')?.value.trim();
-    const localizacao = document.getElementById('contact-address')?.value.trim();
+<!-- jsPDF mais estável -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
 
-    if (!nome || !email || !localizacao) {
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- jsPDF mais estável -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
+
+<script>
+  document.getElementById('btnBaixarPDF').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const form = document.getElementById('quoteForm');
+    const formData = new FormData(form);
+
+    // Campos obrigatórios
+    const nome = formData.get('nome')?.trim();
+    const telefone = formData.get('telefone')?.trim();
+    const localizacao = formData.get('localizacao')?.trim();
+    const tiposServico = formData.getAll('tipoServico[]').filter(s => s.trim() !== "");
+
+    // Validação simples
+    if (!nome || !telefone || !localizacao || tiposServico.length === 0) {
       Swal.fire({
-        icon: 'warning',
+        icon: 'error',
         title: 'Campos obrigatórios em falta',
-        text: 'Por favor, preencha o Nome, Email e Localização antes de baixar a cotação.',
-        confirmButtonText: 'Entendi',
-        confirmButtonColor: '#3085d6'
+        html: `
+          <p>Por favor, preencha os seguintes campos obrigatórios:</p>
+          <ul style="text-align:left;">
+            ${!nome ? '<li><strong>Nome Completo</strong></li>' : ''}
+            ${!telefone ? '<li><strong>Telefone / WhatsApp</strong></li>' : ''}
+            ${!localizacao ? '<li><strong>Localização</strong></li>' : ''}
+            ${tiposServico.length === 0 ? '<li><strong>Serviços desejados</strong></li>' : ''}
+          </ul>
+        `,
+        confirmButtonText: 'Ok, vou corrigir',
       });
       return;
     }
 
-    const selects = document.querySelectorAll('.contact-panel__form select');
-    let servicos = "";
-    selects.forEach(select => {
-      const titulo = select.options[0].textContent.replace("?", "");
-      const escolha = select.options[select.selectedIndex]?.textContent;
-      if (select.selectedIndex > 0) {
-        servicos += `${titulo}: ${escolha}\n`;
+    // Gerar PDF
+    const doc = new jsPDF();
+    let y = 10;
+
+    doc.setFontSize(14);
+    doc.text("Resumo do Pedido de Cotação", 10, y);
+    y += 10;
+
+    // Campos simples
+    for (let [key, value] of formData.entries()) {
+      if (value && value.trim() !== "" && !key.includes('tipoServico') && !key.includes('planoServico')) {
+        const input = form.querySelector(`[name="${key}"]`);
+        const label = input?.placeholder || key;
+        doc.text(`${label}: ${value}`, 10, y);
+        y += 10;
       }
+    }
+
+    // Serviços múltiplos
+    const planos = formData.getAll('planoServico[]');
+    tiposServico.forEach((tipo, i) => {
+      const plano = planos[i] || "Sem plano";
+      doc.text(`Serviço ${i + 1}: ${tipo} - Plano: ${plano}`, 10, y);
+      y += 10;
     });
 
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Pedido de Cotação", 20, 20);
-    doc.setFontSize(12);
-    doc.text(`Nome: ${nome}`, 20, 35);
-    doc.text(`Email: ${email}`, 20, 45);
-    doc.text(`Telefone: ${telefone}`, 20, 55);
-    doc.text(`Localização: ${localizacao}`, 20, 65);
-    doc.text("Serviços Selecionados:", 20, 75);
-    doc.text(servicos || "Nenhum serviço selecionado.", 20, 85);
-
-    doc.save(`cotacao_${nome}.pdf`);
+    doc.save('cotacao.pdf');
   });
 </script>
 
-               
+
+
+
+
 
                 <ul class="social-icons list-unstyled">
                   <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
@@ -553,6 +603,42 @@
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+  document.getElementById("addServico").addEventListener("click", function () {
+    const container = document.getElementById("servicosContainer");
+    const item = container.querySelector(".servico-item");
+    const clone = item.cloneNode(true);
+
+    // Limpar valores do clone
+    clone.querySelectorAll("select").forEach(select => select.value = "");
+    container.appendChild(clone);
+  });
+
+  // Remoção de um bloco de serviço
+  document.getElementById("servicosContainer").addEventListener("click", function (e) {
+    if (e.target.classList.contains("removeServico")) {
+      const items = document.querySelectorAll(".servico-item");
+      if (items.length > 1) {
+        e.target.closest(".servico-item").remove();
+      }
+    }
+  });
+</script>
+
+// botões da cotação //
+<style>
+        .btn-sm {
+          color: rgb(255, 255, 255);
+          background:darkslategray;
+        }
+        .btn-sm:hover{
+          color: rgb(255, 255, 255);
+          background:chartreuse;
+        }
+      </style>
+
+  
 </body>
 
 </html>
