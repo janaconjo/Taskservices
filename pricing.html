@@ -563,6 +563,50 @@
   </div>
 </div><!-- /.row -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.getElementById("btnDownloadPDF").addEventListener("click", function (e) {
+    e.preventDefault();
+
+   
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+   
+    doc.setFontSize(14);
+    doc.text("Catálogo de Serviços - Gestão de Resíduos", 10, 15);
+    doc.setFontSize(11);
+
+    // Secção: Residências
+    doc.text("🏠 Recolha de Lixo em Residências", 10, 30);
+    doc.text("PLANO BÁSICO: MT 1.999/Mês - 1 Recolha por semana, Horário agendado", 10, 40);
+    doc.text("PLANO STANDARD: MT 2.999/Mês - 2 Recolhas por semana, Horários fixos", 10, 50);
+    doc.text("PLANO PREMIUM: MT 4.999/Mês - 3 Recolhas por semana, Horários flexíveis", 10, 60);
+
+    // Secção: Condomínios
+    doc.text("🏢 Recolha em Condomínios", 10, 75);
+    doc.text("BÁSICO: MT 1.200/casa - até 8 casas, 1 recolha por semana", 10, 85);
+    doc.text("STANDARD: MT 1.000/casa - até 18 casas, 2 recolhas por semana", 10, 95);
+    doc.text("PREMIUM: MT 999/casa - 25+ casas, 3 recolhas, inclui formação", 10, 105);
+
+    // Secção: Empresas
+    doc.text("🏭 Recolha em Empresas", 10, 120);
+    doc.text("BÁSICO: MT 9.999 - 1 recolha/semana, 5 baldes", 10, 130);
+    doc.text("STANDARD: MT 15.999 - 2 recolhas/semana, 10 baldes", 10, 140);
+    doc.text("PREMIUM: MT 20.000 - 3 recolhas/semana, plantão 24h", 10, 150);
+
+    // Secção: Outros Serviços
+    doc.text("🔧 Outros Serviços", 10, 165);
+    doc.text("Resíduos Perigosos: Sob Cotação", 10, 175);
+    doc.text("Banheiros Móveis: MT 4.000 em média", 10, 185);
+    doc.text("Contentores: MT 700–2.000/dia", 10, 195);
+    doc.text("Limpeza de Fossas: MT 4.500 em média", 10, 205);
+
+    doc.save("catalogo-servicos.pdf");
+  });
+</script>
+
+
     
     <div class="row">
       <div class="col-12">
@@ -632,124 +676,7 @@
         </div><!-- /.col-inner -->
       </div><!-- /.col-xl-6 -->
 
-      <!-- COLUNA DIREITA: Formulário -->
-      <div class="col-xl-6 col-lg-12">
-        <div class="contact-panel">
-          <form class="contact-panel__form" method="post" action="/submit-quote" id="quoteForm">
-            <div class="row">
-              <div class="col-12">
-                <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome Completo*" name="nome" required>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email" name="email">
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="tel" class="form-control" placeholder="Telefone / WhatsApp*" name="telefone" required>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Localização*" name="localizacao" required>
-                </div>
-              </div>
-
-              <div class="col-12">
-  <label class="font-weight-bold mb-2 d-block">Serviços desejados *</label>
-  <div id="servicosContainer">
-    <div class="form-row mb-2 servico-item">
-      <div class="col-md-6">
-        <select class="form-control" name="tipoServico[]" required>
-          <option value="">-- Tipo de Serviço --</option>
-          <option value="Residencial">Recolha em Residências</option>
-          <option value="Condominio">Recolha em Condomínios</option>
-          <option value="Empresa">Recolha em Empresas</option>
-          <option value="Residuos Perigosos">Resíduos Perigosos</option>
-          <option value="Banheiros Moveis">Banheiros Móveis</option>
-          <option value="Contentores">Baldes de Lixo</option>
-          <option value="Fossas">Limpeza de Fossas</option>
-          <option value="Pos Obra">Limpeza Pós-Obra</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <select class="form-control" name="planoServico[]">
-          <option value="">-- Plano --</option>
-          <option value="Básico">Básico</option>
-          <option value="Standard">Standard</option>
-          <option value="Premium">Premium</option>
-          <option value="Sob Cotação">Sob Consulta</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-danger removeServico">X Remover serviço</button>
-      </div>
-  
-    </div>
-  </div>
-  <button type="button" class="btn btn-sm btn-primary mt-2" id="addServico">+ Adicionar mais Serviços</button>
-</div>
-
-              <div class="col-12">
-                <div class="form-group">
-                  <textarea class="form-control" name="detalhes" rows="4" placeholder="Observações / Especificações"></textarea>
-                </div>
-              </div>
-
-              <!-- Resumo da Cotação -->
-              <div class="col-12">
-                <div class="quote-summary bg-light p-3 mt-3 mb-3">
-                  <h5>Resumo da Cotação</h5>
-                  <div id="quoteDetails"></div>
-                  <div class="total-price mt-2">
-                    <strong>Total Estimado: <span id="totalPrice">MT 0</span></strong>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-12">
-                <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
-                <div class="d-flex">
-                  <div class="form-group input-radio mr-30">
-                    <label class="label-radio">Todos
-                      <input type="radio" name="contact" checked>
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                  <div class="form-group input-radio mr-30">
-                    <label class="label-radio">Email
-                      <input type="radio" name="contact">
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                  <div class="form-group input-radio">
-                    <label class="label-radio">Telefone
-                      <input type="radio" name="contact">
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <button type="submit" class="btn btn__secondary btn__block">
-                  <i class="icon-arrow-right"></i> <span>ENVIAR COTAÇÃO</span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div><!-- /.contact-panel -->
-      </div><!-- /.col-xl-6 -->
+    
 
     </div><!-- /.row -->
   </div><!-- /.container -->
@@ -944,10 +871,196 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
               <h6 class="footer-widget-title">Catálogo de Serviços</h6>
               <div class="footer-widget-content">
-                <a href="request-quote.html" class="btn btn__primary btn__primary-style2 btn__download mb-60">
-                  <i class="icon-download"></i>
-                  <span>Baixar PDF</span>
-                </a>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+            <a href="#" id="downloadCatalogo" class="btn btn__primary btn__primary-style2 btn__download mb-60">
+     <i class="icon-download"></i>
+  <span>Baixar PDF</span>
+</a>
+                  <script>
+  window.onload = function () {
+    document.getElementById("downloadCatalogo").addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+      const titulo = "Catálogo de Serviços de Recolha de Lixo";
+      const contacto = "www.taskservice.com | contacto@taskservice.com | Tel: +258 877337315";
+
+      const margemEsquerda = 20;
+      let y = 20;
+      let pagina = 1;
+
+      const verde = [0, 150, 0];
+
+      const desenharCabecalho = () => {
+        doc.setFillColor(...verde);
+        doc.rect(0, 0, 210, 15, "F");
+
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Task Service", margemEsquerda, 10);
+
+        doc.setTextColor(0);
+        y = 25;
+      };
+
+      const desenharRodape = () => {
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text(contacto, margemEsquerda, 290);
+        doc.text(`Página ${pagina}`, 180, 290);
+      };
+
+      const desenharLinha = () => {
+        doc.setDrawColor(180);
+        doc.line(margemEsquerda, y, 190, y);
+        y += 5;
+      };
+
+      const verificarNovaPagina = () => {
+        if (y > 265) {
+          desenharRodape();
+          doc.addPage();
+          pagina++;
+          desenharCabecalho();
+        }
+      };
+
+      desenharCabecalho();
+
+      doc.setFontSize(18);
+      doc.setTextColor(40, 40, 40);
+      doc.setFont("helvetica", "bold");
+      doc.text(titulo, margemEsquerda, y);
+      y += 10;
+
+      const planos = [
+        {
+          categoria: "Recolha de Lixo em Residências",
+          opcoes: [
+            {
+              nome: "PLANO BÁSICO",
+              preco: "MT 1.999/Mês",
+              beneficios: ["1 Recolha por semana", "Horário agendado", "Inclui 1 balde & 1 saco de lixo"]
+            },
+            {
+              nome: "PLANO STANDARD",
+              preco: "MT 2.999/Mês",
+              beneficios: ["2 Recolhas por semana", "Horários fixos", "Inclui 1 balde & 1 saco de lixo"]
+            },
+            {
+              nome: "PLANO PREMIUM",
+              preco: "MT 4.999/Mês",
+              beneficios: ["3 Recolhas por semana", "Horários flexíveis", "Inclui 3 baldes & 3 sacos de lixo"]
+            }
+          ]
+        },
+        {
+          categoria: "Recolha de Lixo em Condomínios",
+          opcoes: [
+            {
+              nome: "PLANO BÁSICO",
+              preco: "MT 1.200/Mês por casa",
+              beneficios: ["1 Recolha por semana", "Inclui 1 balde & 1 saco por casa"]
+            },
+            {
+              nome: "PLANO STANDARD",
+              preco: "MT 1.000/Mês por casa",
+              beneficios: ["2 Recolhas por semana", "Inclui 1 balde & 1 saco por casa"]
+            },
+            {
+              nome: "PLANO PREMIUM",
+              preco: "MT 999/Mês por casa",
+              beneficios: ["3 Recolhas por semana", "Inclui 1 balde & 1 saco por casa", "Treinamento para moradores"]
+            }
+          ]
+        },
+        {
+          categoria: "Recolha de Lixo em Empresas",
+          opcoes: [
+            {
+              nome: "PLANO BÁSICO",
+              preco: "MT 9.999/Mês",
+              beneficios: ["1 Recolha por semana", "Até 5 baldes e sacos", "Horário comercial"]
+            },
+            {
+              nome: "PLANO STANDARD",
+              preco: "MT 15.999/Mês",
+              beneficios: ["2 Recolhas por semana", "Até 10 baldes e sacos", "Horário flexível"]
+            },
+            {
+              nome: "PLANO PREMIUM",
+              preco: "MT 20.000/Mês",
+              beneficios: ["3 Recolhas por semana", "Volume negociável", "Plantão 24h"]
+            }
+          ]
+        },
+        {
+          categoria: "Outras Soluções Especializadas",
+          opcoes: [
+            {
+              nome: "Resíduos Perigosos",
+              preco: "Sob Cotação",
+              beneficios: ["Coleta segura", "Transporte especializado", "Destinação correta"]
+            },
+            {
+              nome: "Banheiros Móveis",
+              preco: "MT 4.000/Média",
+              beneficios: ["Manutenção diária", "Higiene garantida", "Instalação rápida"]
+            },
+            {
+              nome: "Contentores de Lixo",
+              preco: "MT 700–2.000/Dia",
+              beneficios: ["400L: 2.000MT/dia", "70L: 700MT/dia", "Entrega e recolha incluídas"]
+            },
+            {
+              nome: "Limpeza de Fossas",
+              preco: "MT 4.500/Média",
+              beneficios: ["Equipamento especializado", "Serviço completo", "Preço varia por localização"]
+            }
+          ]
+        }
+      ];
+
+      planos.forEach(sec => {
+        doc.setFontSize(14);
+        doc.setTextColor(...verde);
+        doc.setFont("helvetica", "bold");
+        doc.text(sec.categoria, margemEsquerda, y);
+        y += 7;
+        desenharLinha();
+
+        sec.opcoes.forEach(plano => {
+          doc.setFontSize(12);
+          doc.setTextColor(0);
+          doc.setFont("helvetica", "bold");
+          doc.text(`${plano.nome} - ${plano.preco}`, margemEsquerda + 5, y);
+          y += 6;
+
+          doc.setFontSize(11);
+          doc.setFont("helvetica", "normal");
+          plano.beneficios.forEach(beneficio => {
+            doc.text(`• ${beneficio}`, margemEsquerda + 10, y);
+            y += 5;
+            verificarNovaPagina();
+          });
+
+          y += 4;
+          verificarNovaPagina();
+        });
+
+        y += 5;
+      });
+
+      desenharRodape();
+      doc.save("catalogo-servicos.pdf");
+    });
+  }
+</script>
+
                 <ul class="social-icons list-unstyled">
                   <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a></li>

@@ -13,17 +13,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="assets/css/libraries.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <!-- jsPDF versão clássica e mais compatível -->
+  <!-- jsPDF  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 </head>
 
 <body>
   <div class="wrapper">
-    <div class="preloader">
+  <!-- <div class="preloader">
       <div class="loading"></div>
       <img src="assets/images/loading-animation.gif" class="spinner" alt="Carregando" />
-    </div><!-- /.preloader -->
+    </div> /.preloader -->
 
     <!-- =========================
         Header
@@ -182,7 +186,7 @@
                 <li class="breadcrumb-item active" aria-current="page">PEDIR COTAÇÃO</li>
               </ol>
             </nav>
-            <a href="#contact" class="scroll-down">
+            <a href="#PEDIR" class="scroll-down">
               <i class="icon-arrow-down"></i>
             </a>
           </div><!-- /.col-xl-6 -->
@@ -249,7 +253,7 @@
       </div><!-- /.col-xl-6 -->
 
       <!-- COLUNA DIREITA: Formulário -->
-      <div class="col-xl-6 col-lg-12">
+      <div class="col-xl-6 col-lg-12" id="PEDIR">
         <div class="contact-panel">
           <form class="contact-panel__form" method="post" action="/submit-quote" id="quoteForm">
             <div class="row">
@@ -482,91 +486,9 @@
               </div><!-- /.footer-widget-content -->
             </div><!-- /.col-xl-2 -->
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
-              <h6 class="footer-widget-title">Catálogo de Serviços</h6>
+             
               <div class="footer-widget-content">
-               <a href="#" id="btnBaixarPDF" class="btn btn__primary btn__primary-style2 btn__download mb-60">
-               <i class="icon-download"></i>
-              <span>Baixar PDF</span>
-              </a>
-              <!-- script de pdf-->
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- jsPDF mais estável -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
-
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- jsPDF mais estável -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.min.js"></script>
-
-<script>
-  document.getElementById('btnBaixarPDF').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const form = document.getElementById('quoteForm');
-    const formData = new FormData(form);
-
-    // Campos obrigatórios
-    const nome = formData.get('nome')?.trim();
-    const telefone = formData.get('telefone')?.trim();
-    const localizacao = formData.get('localizacao')?.trim();
-    const tiposServico = formData.getAll('tipoServico[]').filter(s => s.trim() !== "");
-
-    // Validação simples
-    if (!nome || !telefone || !localizacao || tiposServico.length === 0) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Campos obrigatórios em falta',
-        html: `
-          <p>Por favor, preencha os seguintes campos obrigatórios:</p>
-          <ul style="text-align:left;">
-            ${!nome ? '<li><strong>Nome Completo</strong></li>' : ''}
-            ${!telefone ? '<li><strong>Telefone / WhatsApp</strong></li>' : ''}
-            ${!localizacao ? '<li><strong>Localização</strong></li>' : ''}
-            ${tiposServico.length === 0 ? '<li><strong>Serviços desejados</strong></li>' : ''}
-          </ul>
-        `,
-        confirmButtonText: 'Ok, vou corrigir',
-      });
-      return;
-    }
-
-    // Gerar PDF
-    const doc = new jsPDF();
-    let y = 10;
-
-    doc.setFontSize(14);
-    doc.text("Resumo do Pedido de Cotação", 10, y);
-    y += 10;
-
-    // Campos simples
-    for (let [key, value] of formData.entries()) {
-      if (value && value.trim() !== "" && !key.includes('tipoServico') && !key.includes('planoServico')) {
-        const input = form.querySelector(`[name="${key}"]`);
-        const label = input?.placeholder || key;
-        doc.text(`${label}: ${value}`, 10, y);
-        y += 10;
-      }
-    }
-
-    // Serviços múltiplos
-    const planos = formData.getAll('planoServico[]');
-    tiposServico.forEach((tipo, i) => {
-      const plano = planos[i] || "Sem plano";
-      doc.text(`Serviço ${i + 1}: ${tipo} - Plano: ${plano}`, 10, y);
-      y += 10;
-    });
-
-    doc.save('cotacao.pdf');
-  });
-</script>
-
-
-
-
-
+              
 
                 <ul class="social-icons list-unstyled">
                   <li><a href="https://www.facebook.com/taskservices.moz" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
