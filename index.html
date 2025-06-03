@@ -1926,6 +1926,27 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+document.querySelectorAll('a[href="request-quote.html"]').forEach(button => {
+  button.addEventListener('click', function(e) {
+    // Encontra o card pai
+    const card = this.closest('.pricing-item');
+    
+    // Extrai todos os dados relevantes
+    const servico = card.closest('.row').querySelector('.pricing-category-title').textContent.trim();
+    const plano = card.querySelector('.pricing__title').textContent.trim();
+    const preco = card.querySelector('.pricing__price').textContent.trim();
+    const beneficios = Array.from(card.querySelectorAll('.pricing__list li')).map(li => li.textContent.trim());
+    
+    // Salva no localStorage
+    localStorage.setItem('planoSelecionado', JSON.stringify({
+      servico,
+      plano,
+      preco,
+      beneficios,
+      timestamp: new Date().toISOString()
+    }));
+  });
+});
 </script>
 
 <!--botões da cotação--> 

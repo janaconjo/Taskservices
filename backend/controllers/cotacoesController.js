@@ -1,33 +1,46 @@
-const db = require('../database/db');
-const { calcularPreco } = require('../../services/priceCalculator');
 const enviarEmail = require('../services/emailService');
 const enviarSMS = require('../services/smsService');
+const { v4: uuidv4 } = require('uuid');
 
-exports.criarCotacao = async (req, res) => {
+exports.enviarCotacao = async (req, res) => {
+  const { nome, email, telefone, servicos } = req.body;
+
+  // Validação reforçada
+  if (!nome?.trim() || !telefone?.trim() || !Array.isArray(servicos)) {
+    return res.status(400).json({
+      success: false,
+      error: "Dados inválidos. Verifique nome, telefone e serviços."
+    });
+  }
+
   try {
-    const { nome, email, telefone, servicos } = req.body;
+    // Gera ID único
+    const cotacaoId = `COT-${uuidv4().slice(0, 8).toUpperCase()}`;
     
-    // Calcular preço
-    const preco = calcularPreco(servicos);
-    
-    // Salvar no banco
-    db.run(
-      `INSERT INTO cotacoes (nome, email, telefone, servicos, preco) 
-       VALUES (?, ?, ?, ?, ?)`,
-      [nome, email, telefone, JSON.stringify(servicos), preco],
-      (err) => {
-        if (err) throw err;
-      }
-    );
+    // Calcula preço (exemplo: 1500 MT por serviço + 500 MT por plano premium)
+    const preco = servicos.reduce((total, servico) => {
+      return total + 1500 + (servico.plano === 'Premium' ? 500 : 0);
+    }, 0);
 
-    // Enviar comunicações
-    await enviarEmail(email, nome, servicos, preco);
-    await enviarSMS(telefone, preco);
+    // Envia comunicações (em paralelo)
+    await Promise.all([
+      enviarEmail(email || 'clientes@taskservices.co.mz', nome, servicos, preco),
+      enviarSMS(telefone, `Task: Cotação ${cotacaoId} recebida! Valor: ${preco}MT`)
+    ]);
 
-    res.status(201).json({ success: true, preco });
-    
+    // Resposta de sucesso
+    res.json({
+      success: true,
+      id: cotacaoId,
+      preco: preco,
+      message: "Cotação processada com sucesso"
+    });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro interno do servidor' });
+    console.error("Erro no processamento:", error);
+    res.status(500).json({
+      success: false,
+      error: "Erro interno. Por favor, tente novamente mais tarde."
+    });
   }
 };

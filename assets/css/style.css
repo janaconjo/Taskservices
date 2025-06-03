@@ -9117,4 +9117,47 @@ textarea.form-control {
     font-size: 10px;
   }
 }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.icon-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+/* Corrige espaçamento e formatação */
+.resumo-servico {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.resumo-servico h4 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.beneficios {
+  list-style: none;
+  padding-left: 0;
+}
+
+.beneficios ul {
+  padding-left: 20px;
+}
+
+/* Loading spinner */
+.icon-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 /*# sourceMappingURL=style.css.map */

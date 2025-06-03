@@ -305,6 +305,27 @@
       </div>
     </div>
   </div>
+<script>
+  document.querySelector('.login-form').addEventListener('submit', function (e) {
+    // Apenas simulação — remove se tiver backend real
+    e.preventDefault(); // REMOVER esta linha se login.php processar de fato o login
+
+    const email = document.getElementById('email').value;
+    const nomeSimulado = email.split('@')[0]; // ex: ernestovaz
+    const telefoneSimulado = '84xxxxxxx'; // simulado
+
+    // Salva no localStorage
+    const usuario = {
+      nome: nomeSimulado,
+      email: email,
+      telefone: telefoneSimulado
+    };
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+    // Redireciona
+    window.location.href = 'request-quote.html';
+  });
+</script>
 
   <script>
     // Adicione este script no final do body
