@@ -252,166 +252,208 @@
         </div><!-- /.col-inner -->
       </div><!-- /.col-xl-6 -->
 
-      <!-- COLUNA DIREITA: Formulário -->
-      <div class="col-xl-6 col-lg-12" id="PEDIR">
-        <div class="contact-panel">
-          <form class="contact-panel__form" method="post" action="/submit-quote" id="quoteForm">
-            <div class="row">
-              <div class="col-12">
-                <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
+    <!-- COLUNA DIREITA: Formulário -->
+<div class="col-xl-6 col-lg-12" id="PEDIR" >
+  <div class="contact-panel">
+    <form class="contact-panel__form" method="post" action="/submit-quote" id="quoteForm">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="contact-panel__title">PEDIR COTAÇÃO SEM COMPROMISSO</h4>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nome Completo*" name="nome" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" name="email">
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="tel" class="form-control" placeholder="Telefone / WhatsApp*" name="telefone" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Localização*" name="localizacao" required>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="font-weight-bold mb-2 d-block">Serviços desejados *</label>
+          <div id="servicosContainer">
+            <div class="form-row mb-2 servico-item">
+              <div class="col-md-6">
+                <select class="form-control" name="tipoServico[]" required onchange="togglePlanoCapacidade(this)">
+                  <option value="">-- Tipo de Serviço --</option>
+                  <option value="Residencial">Recolha em Residências</option>
+                  <option value="Condominio">Recolha em Condomínios</option>
+                  <option value="Empresa">Recolha em Empresas</option>
+                  <option value="Residuos Perigosos">Resíduos Perigosos</option>
+                  <option value="Banheiros Moveis">Banheiros Móveis</option>
+                  <option value="Contentores">Baldes de Lixo</option>
+                  <option value="Fossas">Limpeza de Fossas</option>
+                  <option value="Pos Obra">Limpeza Pós-Obra</option>
+                </select>
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome Completo*" name="nome" required>
-                </div>
+              <div class="col-md-4 plano-servico-container">
+                <select class="form-control" name="planoServico[]">
+                  <option value="">-- Plano --</option>
+                  <option value="Básico">Básico</option>
+                  <option value="Standard">Standard</option>
+                  <option value="Premium">Premium</option>
+                  <option value="Sob Cotação">Sob Consulta</option>
+                </select>
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email" name="email">
-                </div>
+              <div class="col-md-4 capacidade-servico-container" style="display: none;">
+                <select class="form-control" name="capacidade[]">
+                  <option value="">-- Capacidade --</option>
+                  <option value="500ml">500ml</option>
+                  <option value="600ml">600ml</option>
+                  <option value="700ml">700ml</option>
+                  <option value="800ml">800ml</option>
+                </select>
               </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="tel" class="form-control" placeholder="Telefone / WhatsApp*" name="telefone" required>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Localização*" name="localizacao" required>
-                </div>
-              </div>
-
-              <div class="col-12">
-  <label class="font-weight-bold mb-2 d-block">Serviços desejados *</label>
-  <div id="servicosContainer">
-    <div class="form-row mb-2 servico-item">
-      <div class="col-md-6">
-        <select class="form-control" name="tipoServico[]" required>
-          <option value="">-- Tipo de Serviço --</option>
-          <option value="Residencial">Recolha em Residências</option>
-          <option value="Condominio">Recolha em Condomínios</option>
-          <option value="Empresa">Recolha em Empresas</option>
-          <option value="Residuos Perigosos">Resíduos Perigosos</option>
-          <option value="Banheiros Moveis">Banheiros Móveis</option>
-          <option value="Contentores">Baldes de Lixo</option>
-          <option value="Fossas">Limpeza de Fossas</option>
-          <option value="Pos Obra">Limpeza Pós-Obra</option>
-        </select>
-      </div>
-      <div class="col-md-4">
-        <select class="form-control" name="planoServico[]">
-          <option value="">-- Plano --</option>
-          <option value="Básico">Básico</option>
-          <option value="Standard">Standard</option>
-          <option value="Premium">Premium</option>
-          <option value="Sob Cotação">Sob Consulta</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-danger removeServico">X Remover serviço</button>
-      </div>
-  
-    </div>
-  </div>
-  <button type="button" class="btn btn-sm btn-primary mt-2" id="addServico">+ Adicionar mais Serviços</button>
-</div>
-
-              <div class="col-12">
-                <div class="form-group">
-                  <textarea class="form-control" name="detalhes" rows="4" placeholder="Observações / Especificações"></textarea>
-                </div>
-              </div>
-
-              <!-- Resumo da Cotação -->
-              <div class="col-12">
-                <div class="quote-summary bg-light p-3 mt-3 mb-3">
-                  <h5>Resumo da Cotação</h5>
-                  <div id="quoteDetails"></div>
-                  <div class="total-price mt-2">
-                    <strong>Total Estimado: <span id="totalPrice">MT 0</span></strong>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-12">
-                <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
-                <div class="d-flex">
-                  <div class="form-group input-radio mr-30">
-                    <label class="label-radio">Todos
-                      <input type="radio" name="contact" checked>
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                  <div class="form-group input-radio mr-30">
-                    <label class="label-radio">Email
-                      <input type="radio" name="contact">
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                  <div class="form-group input-radio">
-                    <label class="label-radio">Telefone
-                      <input type="radio" name="contact">
-                      <span class="radio-indicator"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <button type="submit" class="btn btn__secondary btn__block">
-                  <i class="icon-arrow-right"></i> <span>ENVIAR COTAÇÃO</span>
-                </button>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-danger removeServico">X Remover serviço</button>
               </div>
             </div>
-          </form>
-        </div><!-- /.contact-panel -->
-      </div><!-- /.col-xl-6 -->
+          </div>
+          <button type="button" class="btn btn-sm btn-primary mt-2" id="addServico">+ Adicionar mais Serviços</button>
+        </div>
 
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-</section><!-- /.contact-layout2 -->
+        <div class="col-12">
+          <div class="form-group">
+            <textarea class="form-control" name="detalhes" rows="4" placeholder="Em caso de necessidades específicas, por favor, especifique aqui abaixo"></textarea>
+          </div>
+        </div>
+
+        <!-- Resumo da Cotação -->
+        <div class="col-12">
+          <div class="quote-summary bg-light p-3 mt-3 mb-3">
+            <h5>Resumo da Cotação</h5>
+            <div id="quoteDetails"></div>
+            <div class="total-price mt-2">
+              <strong>Total Estimado: <span id="totalPrice">MT 0</span></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <span class="font-weight-bold color-heading d-block mb-15 mt-10">Contacto Preferido</span>
+          <div class="d-flex">
+            <div class="form-group input-radio mr-30">
+              <label class="label-radio">Todos
+                <input type="radio" name="contact" checked>
+                <span class="radio-indicator"></span>
+              </label>
+            </div>
+            <div class="form-group input-radio mr-30">
+              <label class="label-radio">Email
+                <input type="radio" name="contact">
+                <span class="radio-indicator"></span>
+              </label>
+            </div>
+            <div class="form-group input-radio">
+              <label class="label-radio">Telefone
+                <input type="radio" name="contact">
+                <span class="radio-indicator"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn__secondary btn__block">
+            <i class="icon-arrow-right"></i> <span>ENVIAR COTAÇÃO</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div><!-- /.contact-panel -->
+</div><!-- /.col-xl-6 -->
+
+<script>
+  function togglePlanoCapacidade(selectElem) {
+  
+    const servicoItem = selectElem.closest('.servico-item');
+    if (!servicoItem) return;
+
+  
+    const planoContainer = servicoItem.querySelector('.plano-servico-container');
+    const capacidadeContainer = servicoItem.querySelector('.capacidade-servico-container');
+
+    if (selectElem.value === 'Contentores') {
+      if(planoContainer) planoContainer.style.display = 'none';
+      if(capacidadeContainer) capacidadeContainer.style.display = 'block';
+    } else {
+      if(planoContainer) planoContainer.style.display = 'block';
+      if(capacidadeContainer) capacidadeContainer.style.display = 'none';
+    }
+  }
+
+
+  document.getElementById('addServico').addEventListener('click', function() {
+    const container = document.getElementById('servicosContainer');
+    const lastServico = container.querySelector('.servico-item:last-child');
+    if (!lastServico) return;
+   
+    const newServico = lastServico.cloneNode(true);
+
+    const selects = newServico.querySelectorAll('select');
+    selects.forEach(sel => {
+      sel.value = '';
+     
+      if(sel.name === 'capacidade[]') {
+        sel.parentElement.style.display = 'none';
+      }
+  
+      if(sel.name === 'planoServico[]') {
+        sel.parentElement.style.display = 'block';
+      }
+    });
+
+    container.appendChild(newServico);
+  });
+
+  document.getElementById('servicosContainer').addEventListener('change', function(e){
+    if(e.target && e.target.matches('select[name="tipoServico[]"]')){
+      togglePlanoCapacidade(e.target);
+    }
+  });
+
+
+  document.getElementById('servicosContainer').addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('removeServico')){
+      const servicoItem = e.target.closest('.servico-item');
+      if(servicoItem){
+        servicoItem.remove();
+      }
+    }
+  });
+</script>
+
+
 
  
 
     <!-- =====================
          Clients
       ======================== -->
-    <section class="clients clients-layout2 border-bottom py-0">
+    <section class="clients clients-layout2 border-bottom py-0" style="background-color: white;">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-sm-12 col-md-12 col-lg-6">
-            <div class="slick-carousel"
-              data-slick='{"slidesToShow": 3, "arrows": false, "dots": false, "autoplay": true,"autoplaySpeed": 2000, "infinite": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 3}}, {"breakpoint": 767, "settings": {"slidesToShow": 3}}, {"breakpoint": 480, "settings": {"slidesToShow": 2}}]}'>
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/1.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/2.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/3.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/4.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/5.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/6.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/3.png" alt="client"></a>
-              </div><!-- /.client -->
-              <div class="client">
-                <a href="#"><img src="assets/images/clients/4.png" alt="client"></a>
-              </div><!-- /.client -->
-            </div><!-- /.carousel -->
-          </div><!-- /.col-lg-6 -->
+          
           <div class="col-sm-12 col-md-12 col-lg-6">
             <strong class="text-center d-block mt-40">Receba uma Cotação precisa em até 2 a 5 dias após preencher o formulário nesta página. Ou ligue para nós:
               <a href="https://wa.me/+258877337315" class="text-underlined-primary">+258877337315</a>
@@ -425,7 +467,7 @@
     <!-- ========================
       Footer
     ========================== -->
-    <footer class="footer">
+    <footer class="footer"style=" background-color: white;">
       <div class="footer-primary">
         <div class="container">
           <div class="row">
