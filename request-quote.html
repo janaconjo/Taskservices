@@ -307,7 +307,16 @@
           <option value="Sob Cotação" id="select:nth-of-type(5)">Sob Consulta</option>
         </select>
       </div>
-      <div class="col-md-2">
+
+      <div class="col-md-4 capacidade-servico-container" style="display: none;">
+                <select class="form-control" name="capacidade[]">
+                  <option value="">-- Capacidade --</option>
+                  <option value="70 litros">500ml</option>
+                  <option value="400 litros">600ml</option>
+                </select>
+        </div>
+
+    <div class="col-md-2">
         <button type="button" class="btn btn-sm btn-danger removeServico">X Remover serviço</button>
       </div>
   
@@ -649,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'Residencial': { 'Básico': 1999, 'Standard': 2999, 'Premium': 4999 },
     'Condominio': { 'Básico': 1200, 'Standard': 1000, 'Premium': 999 },
     'Empresa': { 'Básico': 9999, 'Standard': 15999, 'Premium': 20000 },
-    'Contentores': { '400 Litros': 1800, '70 Litros': 900 }
+    'Contentores': { '400 litros': 1800, '70 litros': 900 }
   };
 
   const servicosSemPlano = {
@@ -812,6 +821,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
   
 </body>
+<script>
+  function togglePlanoCapacidade(selectElem) {
+  
+    const servicoItem = selectElem.closest('.servico-item');
+    if (!servicoItem) return;
+
+  
+    const planoContainer = servicoItem.querySelector('.plano-servico-container');
+    const capacidadeContainer = servicoItem.querySelector('.capacidade-servico-container');
+
+    if (selectElem.value === 'Contentores') {
+      if(planoContainer) planoContainer.style.display = 'none';
+      if(capacidadeContainer) capacidadeContainer.style.display = 'block';
+    } else {
+      if(planoContainer) planoContainer.style.display = 'block';
+      if(capacidadeContainer) capacidadeContainer.style.display = 'none';
+    }
+  }
+
+
+  document.getElementById('addServico').addEventListener('click', function() {
+    const container = document.getElementById('servicosContainer');
+    const lastServico = container.querySelector('.servico-item:last-child');
+    if (!lastServico) return;
+   
+    const newServico = lastServico.cloneNode(true);
+
+    const selects = newServico.querySelectorAll('select');
+    selects.forEach(sel => {
+      sel.value = '';
+     
+      if(sel.name === 'capacidade[]') {
+        sel.parentElement.style.display = 'none';
+      }
+  
+      if(sel.name === 'planoServico[]') {
+        sel.parentElement.style.display = 'block';
+      }
+    });
+
+    container.appendChild(newServico);
+  });
+
+  document.getElementById('servicosContainer').addEventListener('change', function(e){
+    if(e.target && e.target.matches('select[name="tipoServico[]"]')){
+      togglePlanoCapacidade(e.target);
+    }
+  });
+
+
+  document.getElementById('servicosContainer').addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('removeServico')){
+      const servicoItem = e.target.closest('.servico-item');
+      if(servicoItem){
+        servicoItem.remove();
+      }
+    }
+  });
+</script>
+
+
+
 
 
 </html>
